@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>IEPSCF</title>
+  
+    <link rel="stylesheet" href="css/semantic.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/icon.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Nova+Square" rel="stylesheet">
+  
+</head>
+
+<body>
+
+    <div class="ui container">
+        <div class="ui grid">
+            <div class="one column row">
+                <div class="six wide column">
+                    <h3 class="ui header center aligned segment">Log admin</h3>
+                    <form action="actions/logadmin.php" method="POST">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="username" placeholder="Login">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="password" placeholder="Mot de passe">
+                            </div>
+                        </div>
+                        <button class="ui fluid large teal submit button" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

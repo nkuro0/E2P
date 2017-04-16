@@ -1,0 +1,164 @@
+.container {
+    width:1250px;
+    margin: auto;
+}
+
+h3 {
+    font-family: 'Nova Square', cursive !important;
+    font-size: 1.1em !important;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    font-family: 'Carrois Gothic SC', sans-serif !important;
+}
+
+
+/* nav */
+
+/* Carousel */
+
+ul.glide__track {
+    padding:0 !important;
+}
+
+li.glide__slide div {
+    height:250px;
+    width:1250px;
+    margin:auto;
+}
+
+
+.ui.backfont.segment {
+    height: 50px;
+    width: 175px;
+    position: absolute;
+    border-radius: 0px 0px 20px 0px;
+    background-color: rgba(255, 255, 255, 0.70);
+
+}
+
+.glide {
+    height:350px;
+    margin-top: 15px;
+}
+
+.glide__wrapper {
+    max-height: 100%;
+}
+
+.glide__slide.pre {
+    transform: perspective(60em) rotateY(18deg);
+    background-color: red;
+}
+
+.glide__slide.following {
+    transform: perspective(60em) rotateY(-18deg);
+    background-color: green;
+}
+
+#slidetitle {
+    float: left;
+    height: 30px;
+    width: 100px;
+    position: absolute;
+}
+
+#slideprice {
+    float: left;
+    height: 30px;
+    width: 100px;
+    margin-left: 100px;
+    position: absolute;
+}
+
+/* Content */
+
+/* Bouton */
+.ui.fluid.large.teal.submit.button {
+    margin-top: 10px;
+}
+.ui.form.segment {
+    margin-bottom: 10px;
+}
+
+/* Effet hover sur image catalogue */
+
+li:hover img.circleicon {
+    opacity: 0.8;
+    transition: 200ms ease-in-out;
+}
+
+.circleicon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    filter: invert(100%) ;
+    transform: translate(50% ,100%);
+    opacity: 0;
+}
+
+a:hover img.circleiconcat {
+    opacity: 0.8;
+    transition: 200ms ease-in-out;
+}
+.circleiconcat {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    filter: invert(100%) ;
+    transform: translate(100% , 150%);
+    opacity: 0.2;
+}
+
+.ui.image {
+    position: static;
+}
+
+/* Positionnement contenu */
+
+.jeuContent {
+    width: auto;
+    display: inline-block;
+}
+
+.placement {
+    width: 100%;
+    margin-left: 0%;
+}
+
+.priceText {
+    display: inline-block;
+    margin: auto;
+}
+.ui.vertical.animated.button.buybutton {
+    display: inline-block;
+}
+
+.ui.grid {
+    padding-top: 30px;
+}
+
+.ui.input.focus.login {
+    margin-bottom: 10px;
+}
+
+.ui.left.icon.input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* modal */
+
+.ui.modal.test {
+    display: block !important;
+}
+
+/* News */
+
+
+/* footer */
+
