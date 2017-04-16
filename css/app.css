@@ -1,0 +1,210 @@
+
+.container {
+    width:1250px;
+    margin: auto;
+}
+
+h3 {
+    font-family: 'Nova Square', cursive !important;
+    font-size: 1.1em !important;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    font-family: 'Carrois Gothic SC', sans-serif;
+}
+
+a._panier i {
+    line-height: 40px;
+    width: 40px;
+}
+/* nav */
+
+nav .panier {
+    margin-left: 30px;
+}
+
+.panier {
+    background: rgba(255,255,255,.15);
+}
+
+/* Carousel */
+
+ul.glide__track {
+    padding:0 !important;
+}
+
+li.glide__slide div {
+    height:250px;
+    width:1250px;
+    margin:auto;
+}
+
+img.logo {
+    width: 75px !important;
+}
+
+.ui.backfont.segment {
+    height: 50px;
+    width: 175px;
+    position: absolute;
+    border-radius: 0px 0px 20px 0px;
+    background-color: rgba(255, 255, 255, 0.70);
+
+}
+
+.glide {
+    height:350px;
+}
+
+.glide__wrapper {
+    max-height: 100%;
+}
+
+.glide__slide.pre {
+    transform: perspective(60em) rotateY(18deg);
+    background-color: red;
+}
+
+.glide__slide.following {
+    transform: perspective(60em) rotateY(-18deg);
+    background-color: green;
+}
+
+#slidetitle {
+    float: left;
+    height: 30px;
+    width: 100px;
+    position: absolute;
+}
+
+#slideprice {
+    float: left;
+    height: 30px;
+    width: 100px;
+    margin-left: 100px;
+    position: absolute;
+}
+
+/* Content */
+
+
+
+/* Bouton */
+.ui.fluid.large.teal.submit.button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.ui.form.segment {
+    margin-bottom: 10px;
+}
+
+/* Effet hover sur image catalogue */
+
+li:hover img.circleicon {
+    opacity: 0.8;
+    transition: 200ms ease-in-out;
+}
+
+img.circleicon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    filter: invert(100%) ;
+    transform: translate(50% ,100%);
+    opacity: 0;
+}
+
+a:hover img.circleiconcat {
+    opacity: 0.8;
+    transition: 200ms ease-in-out;
+}
+img.circleiconcat {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    filter: invert(100%) ;
+    transform: translate(100% , 150%);
+    opacity: 0.2;
+}
+img.imgjeux {
+    box-shadow: 1px 1px 8px #555;
+}
+
+.ui.image {
+    position: static;
+}
+
+/* Positionnement contenu */
+
+li.jeuglobal {
+    float: left;
+}
+
+li.jeuContent {
+    width: auto;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+ul.placement-prix {
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0;
+}
+li.placement {
+    width: 100%;
+    margin-left: 0%;
+}
+
+li.priceText {
+    display: inline-block;
+    margin: auto;
+}
+li.ui.vertical.animated.button.buybutton {
+    display: inline-block;
+}
+
+li.ui.vertical.animated.button.buybutton a {
+    text-decoration: none;
+    color: black;
+}
+
+.ui.grid {
+    padding-top: 30px;
+}
+
+.ui.input.focus.login {
+    margin-bottom: 10px;
+}
+
+.ui.left.icon.input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* modal */
+
+a.buyModal {
+text-decoration: none;
+color: inherit;
+}
+
+/* News */
+
+/* Panier */
+
+table.ui.celled.padded.table {
+    margin-top: 50px !important;
+}
+
+/* footer */
+
+footer {
+margin-top: 50px;
+    
+}
+
+
