@@ -23,6 +23,7 @@ $page = $result->fetchObject();
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E2P</title>
 
     <!-- Semantic UI core CSS -->
@@ -38,6 +39,9 @@ $page = $result->fetchObject();
     <script src="js/jquery.js"></script>
     <script src="js/glide.min.js"></script>
     <script src="js/semantic.min.js"></script>
+    <!-- CK editor -->
+    <script src="js/ckeditor/ckeditor.js"></script>
+
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Nova+Square" rel="stylesheet">
 
@@ -47,30 +51,32 @@ $page = $result->fetchObject();
 
 <!----navbar---->
     <main>
-       <nav class="ui inverted menu">
-            <div class="ui container">
-                <div class="header item">
-                    <img class="logo" src="img/E2P.png">
-                </div>
-                <div class="right menu">
-                    <?php while($row =$resultMenu->fetchObject()):?>
-                        <a class="item <?php
-                        if($_GET['page'] == $row->slug) {
-                            echo 'active';
-                        }
-                        ?>" href="?page=<?=$row->slug?>"><?=$row->link?></a>
-                    <?php endwhile;?>
-                    <div class="ui category search item">
-                        <div class="ui transparent icon input">
-                            <input class="prompt" type="text" placeholder="Recherche">
-                            <i class="search link icon inverted"></i>
-                        </div>
+       <nav class="ui inverted segment">
+           <div class="ui nav container">
+            <div class="ui inverted secondary pointing menu">
+                 <div class="header item">
+                     <img class="logo" src="img/E2P.png">
+                 </div>
+                     <?php while($row =$resultMenu->fetchObject()):?>
+                         <a class="item <?php
+                         if($_GET['page'] == $row->slug) {
+                             echo 'active';
+                         }
+                         ?>" href="?page=<?=$row->slug?>"><?=$row->link?></a>
+                     <?php endwhile;?>
+                    <div class="right menu">
+                     <a class="item">
+                         <a class="ui transparent icon input">
+                             <input class="prompt" type="text" placeholder="Recherche">
+                             <i class="search link icon inverted"></i>
+                         </a>
+                     </a>
+                     <div class="panier ui icon input">
+                         <a class="_panier" href="?page=panier"><i class="link inverted shop icon"><b>&nbsp(<?=array_sum($_SESSION['panier'])?>)</b></i></a>
+                     </div>
                     </div>
-                    <div class="panier ui icon input">
-                        <a class="_panier" href="?page=panier"><i class="link inverted shop icon"><b>&nbsp(<?=array_sum($_SESSION['panier'])?>)</b></i></a>
-                    </div>
-                </div>
             </div>
+           </div>
        </nav>
 
 <!----navbar---->

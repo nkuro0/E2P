@@ -1,5 +1,7 @@
 <?php
 
+
+
 ?>
 
 <div class="ui comments">
@@ -74,12 +76,13 @@
             </div>
         </div>
     </div>
-    <form class="ui reply form">
+
+    <form action="actions/addcomment.php" method="post" class="ui reply form" >
         <div class="field">
-            <textarea style="margin-top: 0px; margin-bottom: 0px; height: 168px;"></textarea>
+            <textarea name="text" style="margin-top: 0px; margin-bottom: 0px; height: 168px;"></textarea>
         </div>
-        <div class="ui blue labeled submit icon button">
-            <i class="icon edit"></i> Add Reply
-        </div>
+        <input type="text">
+        <input class="ui blue labeled submit icon button" type="submit" value="Envoyer">
+
     </form>
 </div>

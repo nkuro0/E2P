@@ -1,3 +1,4 @@
+</main>
 <footer>
     <div class="ui inverted vertical footer segment">
 
@@ -25,7 +26,9 @@
         </div>
     </div>
 </footer>
-
-<script type="text/javascript" src="js/app.js"></script>
 </body>
+<script src="js/app.js"></script>
+<script>
+    CKEDITOR.replace('edit');
+</script>
 </html>

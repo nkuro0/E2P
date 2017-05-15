@@ -29,7 +29,7 @@ if($_GET['page'] == 'accueil') {
     ?>
 
     <div class="ui container">
-    <div class="ui grid">
+    <div class="ui two row stackable grid">
         <div class="three column row">
 
 <?php
@@ -192,11 +192,11 @@ require "includes/formlogin.php";
 //Page Catalogue --------
 }
 elseif($_GET['page'] == 'catalogue') {
-echo '<div class="ui container">
-        <div class="ui grid">
+    echo '<div class="ui container">
+        <div class="ui two column stackable grid">
             <div class="two column row">';
-            require "includes/formlogin.php";
-                echo '<div class="thirteen wide column">
+    require "includes/formlogin.php";
+    echo '<div class="thirteen wide column">
                     <h4 class="ui header segment center aligned">Jeux</h4>';
 
 //Affichage d'un jeu ------
@@ -217,38 +217,60 @@ echo '<div class="ui container">
                 WHERE jeux.id = :jeux_id";
         $result2 = $dbh->prepare($sql2);
         $result2->execute(['jeux_id' => $_GET['id']]);
+        ?>
 
-        echo '<div class="ui grid vertical segment" style="background-color: rgba(0, 0, 0, 0.03); border-radius: 25px">
-                        <div class="three wide column">
-                            <img class="ui top aligned huge image" style="border-style: solid; border-radius:10px; border-width:5px; border-color: #ffffff;" src="img/imgjeux/'. $jeux->imgSmall .'">
-                        </div>
-                        <div class="thirteen wide column">
-                            <h4 class="ui header">'. $jeux->title .'</h4>
-                            <h5 class="ui header">'.$jeux->prix.' €</h5>
-                            <h5 class="ui header">Genre : ';
-                            while($jeux2=$result2->fetchObject()){
-                                echo '<b>'.$jeux2->tags.' | </b>';
-                            }
-                            echo '</h5>';
-                            if($jeux->quantity>0) {
-                                    echo '<h5 class="ui header" style="color: rgba(145, 222, 110, 1)">En stock</h5>';
-                            }
-                                else {
-                                    echo '<h5 class="ui header" style="color: rgba(179, 25, 38, 1)">Hors stock</h5>';
-                                }
-                            echo '<h5 class="ui header">Date de sortie : '.$jeux->date.'</h5>';
-                            for($i = 1; $i<= 5; $i++)
-                                if($i <= $jeux->eval) {
-                                    echo '<i class="star icon"></i>';
-                                }
-                                else {
-                                    echo '<i class="empty star icon"></i>';
-                                    }
-                            echo '<p>'.$jeux->description.'</p>
-                            <a class="ui blue button" href="?page=addpanier&id='.$jeux->id.'">Acheter</a>
-                        </div>
-              </div>';
+        <div class="ui vertical segment">
+            <div class="ui two column stackable grid">
+                <div class="thirteen wide column">
+                    <h4 class="ui header"><?=$jeux->title?></h4>
+                    <h5 class="ui header"><?=$jeux->prix?>€</h5>
+                    <h5 class="ui header">Genre :
+                        <?php while ($jeux2 = $result2->fetchObject()): ?>
+                            <b><?= $jeux2->tags ?> | </b>
+                        <?php endwhile; ?>
+                    </h5>
+                    <?php if ($jeux->quantity > 0): ?>
+                        <h5 class="ui header" style="color: rgba(145, 222, 110, 1)">En stock</h5>
+                    <?php else: ?>
+                        <h5 class="ui header" style="color: rgba(179, 25, 38, 1)">Hors stock</h5>
+                    <?php endif; ?>
+                    <h5 class="ui header">Date de sortie : <?= $jeux->date ?></h5>
+                    <?php for ($i = 1; $i <= 5; $i++):
+                        if ($i <= $jeux->eval): ?>
+                            <i class="star icon"></i>
+                        <?php else: ?>
+                            <i class="empty star icon"></i>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </div>
+                <div class="three wide column">
+                    <img class="ui top aligned huge image"
+                         style="border-style: solid; border-radius:5px; border-width:5px;"
+                         src="img/imgjeux/<?=$jeux->imgSmall?>">
+                    <a class="ui single blue button" href="?page=addpanier&id=<?= $jeux->id?>">Acheter</a>
+                </div>
+            </div>
+
+
+            <div class="ui top attached tabular menu">
+                <a class="item active" data-tab="first">Description</a>
+                <a class="item" data-tab="second">Vidéo | Gallerie</a>
+                <a class="item" data-tab="third">Avis</a>
+            </div>
+            <div class="ui bottom attached tab segment active" data-tab="first"><?=$jeux->description?></div>
+            <div class="ui bottom attached tab segment" data-tab="second">
+
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="third">
+                <form>
+                    <textarea id="edit" name="edit"></textarea>
+                <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
+                </form>
+            </div>
+        </div>
+        <?php
     }
+
 //Affichage de tout les jeux -----
     if(isset($_GET['id'])){
         $id = $_GET['id'];
@@ -269,7 +291,7 @@ echo '<div class="ui container">
 ?>
                 <?php while($jeux =$affichagecatalogue->fetchObject()):?>
 
-                        <div class="ui grid vertical segment">
+                        <div class="ui two stackable grid vertical segment">
                             <div class="three wide column">
                                 <a href="?page=catalogue&id=<?=$jeux->id?>"><img class="circleiconcat" src="img/icons/circle.svg"></a>
                                 <img class="ui top aligned small image" src="img/imgjeux/<?=$jeux->imgSmall?>">
@@ -283,6 +305,7 @@ echo '<div class="ui container">
                                 echo '<h5 class="ui header" style="color: rgba(179, 25, 38, 1)">Hors stock</h5>';
                                 }?>
                                 <h5 class="ui header"><?=$jeux->prix?> €</h5>
+
                                 <?php for($i = 1; $i<= 5; $i++):?>
                                     <?php if($i <= $jeux->eval):?>
                                         <i class="star icon"></i>
@@ -309,10 +332,6 @@ echo '<div class="ui container">
 // Affichage de la pagination
 }
 ?>
-
-
-
-
 
 <?php
 //Page "News" -------------

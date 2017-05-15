@@ -4,6 +4,10 @@
     margin: auto;
 }
 
+main {
+    min-height:750px;
+}
+
 h3 {
     font-family: 'Nova Square', cursive !important;
     font-size: 1.1em !important;
@@ -25,6 +29,10 @@ a._panier i {
 
 nav .panier {
     margin-left: 30px;
+}
+
+.ui.inverted.segment {
+    padding: 0;
 }
 
 .panier {
@@ -100,6 +108,39 @@ img.logo {
 }
 .ui.form.segment {
     margin-bottom: 10px;
+}
+
+.ui.single.blue.button {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.positive.ui.button {
+    margin-top: 10px;
+}
+
+/* tab */
+
+.ui.bottom.attached.tab.segment{
+    opacity:0;
+    z-index: 1;
+    height:0;
+    -webkit-transition: all 400ms ease-in-out;
+    -moz-transition: all 400ms ease-in-out;
+    -ms-transition: all 400ms ease-in-out;
+    -o-transition: all 400ms ease-in-out;
+    transition: all 400ms ease-in-out;
+}
+
+.ui.bottom.attached.tab.segment.active{
+    opacity:1;
+    height:auto;
+    z-index: 1;
+    -webkit-transition: all 400ms ease-in-out;
+    -moz-transition: all 400ms ease-in-out;
+    -ms-transition: all 400ms ease-in-out;
+    -o-transition: all 400ms ease-in-out;
+    transition: all 400ms ease-in-out;
 }
 
 /* Effet hover sur image catalogue */
@@ -196,9 +237,6 @@ color: inherit;
 
 /* Panier */
 
-table.ui.celled.padded.table {
-    margin-top: 50px !important;
-}
 
 /* footer */
 
