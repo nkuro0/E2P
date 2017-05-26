@@ -26,7 +26,7 @@
     <?php endif; ?>
 
         <a href="?page=inscription"><div class="ui fluid large teal submit button">Inscription</div></a>
-
+        <div class="ui fluid large teal submit button" data-api="smartsupp" data-operation="open" data-text="Hello..."/>Support</div>
     <?php if(isset($_SESSION['flash'])): ?>
         <?php foreach($_SESSION['flash'] as $type => $message): ?>
             <div class="ui center aligned green segment">

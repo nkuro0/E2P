@@ -99,7 +99,10 @@ img.logo {
 
 /* Content */
 
-
+iframe{
+    width: 100%;
+    min-height: 300px;
+}
 
 /* Bouton */
 .ui.fluid.large.teal.submit.button {

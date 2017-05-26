@@ -204,13 +204,17 @@ elseif($_GET['page'] == 'catalogue') {
     if (isset($_GET['id'])) {
         $sql = "SELECT *, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`
                 FROM jeux
-                WHERE id = :id";
+                LEFT JOIN avis_jeux
+                ON avis_jeux.jeux_id = jeux.id
+                LEFT JOIN users
+                ON users.id = avis_jeux.user_id
+                WHERE jeux.id = :id";
         $result = $dbh->prepare($sql);
         $result->execute(['id' => $_GET['id']]);
         $jeux = $result->fetchObject();
         $sql2 = "SELECT *
                 FROM categorie
-                LEFT JOIN cat_join
+                LEFT JOIN cat_join  
                 ON cat_join.categorie_id = categorie.id
                 LEFT JOIN jeux
                 ON cat_join.jeux_id = jeux.id
@@ -257,17 +261,28 @@ elseif($_GET['page'] == 'catalogue') {
                 <a class="item" data-tab="second">Vidéo | Gallerie</a>
                 <a class="item" data-tab="third">Avis</a>
             </div>
-            <div class="ui bottom attached tab segment active" data-tab="first"><?=$jeux->description?></div>
+            <div class="ui bottom attached tab segment active" data-tab="first"><p><?=$jeux->description?></p></div>
             <div class="ui bottom attached tab segment" data-tab="second">
-
+                <div class="video-gallery">
+                    <iframe src="https://www.youtube.com/embed/KrXrk1ntTCc" frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
             <div class="ui bottom attached tab segment" data-tab="third">
-                <form>
-                    <textarea id="edit" name="edit"></textarea>
+                <p><b><?=$jeux->username?></b></p>
+                <p><?=$jeux->text?></p>
+                <?php for ($i = 1; $i <= 5; $i++):
+                    if ($i <= $jeux->avis_eval): ?>
+                        <i class="star icon"></i>
+                    <?php else: ?>
+                        <i class="empty star icon"></i>
+                    <?php endif; ?>
+                <?php endfor; ?>
                 <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
-                </form>
+                <textarea id="edit" name="edit"></textarea>
+                <a class="ui single blue button">Envoyer</a>
             </div>
         </div>
+
         <?php
     }
 
@@ -294,7 +309,7 @@ elseif($_GET['page'] == 'catalogue') {
                         <div class="ui two stackable grid vertical segment">
                             <div class="three wide column">
                                 <a href="?page=catalogue&id=<?=$jeux->id?>"><img class="circleiconcat" src="img/icons/circle.svg"></a>
-                                <img class="ui top aligned small image" src="img/imgjeux/<?=$jeux->imgSmall?>">
+                                <img class="ui centered small image" src="img/imgjeux/<?=$jeux->imgSmall?>">
                             </div>
                             <div class="thirteen wide column">
                                 <h4 class="ui header"><?=$jeux->title?> </h4>

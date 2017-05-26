@@ -41,7 +41,16 @@ $page = $result->fetchObject();
     <script src="js/semantic.min.js"></script>
     <!-- CK editor -->
     <script src="js/ckeditor/ckeditor.js"></script>
-
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '58798888bf923c06c182abd15c3cf587becd0ce6';
+        window.smartsupp||(function(d) {
+            var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+            s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+            c.type='text/javascript';c.charset='utf-8';c.async=true;
+            c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+        })(document);
+    </script>
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Nova+Square" rel="stylesheet">
 
