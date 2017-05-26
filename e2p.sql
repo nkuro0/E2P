@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 18 Avril 2017 à 09:39
+-- Généré le :  Ven 26 Mai 2017 à 11:11
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `e2p`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `avis_jeux`
+--
+
+CREATE TABLE `avis_jeux` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `jeux_id` int(11) NOT NULL,
+  `text` text NOT NULL,
+  `avis_eval` tinyint(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `avis_jeux`
+--
+
+INSERT INTO `avis_jeux` (`id`, `user_id`, `jeux_id`, `text`, `avis_eval`) VALUES
+(3, 3, 14, 'merci g2p, le jeu est génial et votre service est très rapide !', 3);
 
 -- --------------------------------------------------------
 
@@ -72,9 +93,10 @@ INSERT INTO `cat_join` (`id`, `jeux_id`, `categorie_id`) VALUES
 (32, 11, 7),
 (33, 4, 1),
 (34, 4, 5),
-(35, 14, 3),
 (36, 15, 1),
-(37, 15, 8);
+(37, 15, 8),
+(38, 14, 3),
+(39, 14, 7);
 
 -- --------------------------------------------------------
 
@@ -86,7 +108,7 @@ CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `content` longtext,
   `parent_id` int(11) DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `comments`
@@ -131,7 +153,7 @@ INSERT INTO `jeux` (`id`, `title`, `prix`, `datePub`, `eval`, `imgSmall`, `quant
 (11, 'Star wars battle front', '26', '2017-04-03', 1, '1487538514.jpg', 327, NULL, '<p>Le jeu se concentre sur cinq films de la saga&nbsp;Star Wars,&nbsp;Rogue One: A Star Wars Story,&nbsp;Un nouvel espoir,&nbsp;L&#39;Empire contre-attaque,&nbsp;Le Retour du Jedi&nbsp;et&nbsp;Le R&eacute;veil de la Force.&nbsp;Star Wars Battlefront&nbsp;met en sc&egrave;ne des combats arm&eacute;s entre les forces de l&#39;Empire galactique et d&#39;une organisation s&#39;y opposant, l&#39;Alliance rebelle (parfois appel&eacute;e la R&eacute;bellion) sur diverses plan&egrave;tes de la galaxie fictive. Ainsi, les plan&egrave;tes Tatooine (apparaissant d&egrave;s&nbsp;Un nouvel espoir), Hoth, Bespin (issues de&nbsp;L&#39;Empire contre-attaque), Endor (vue dans&nbsp;Le Retour du Jedi), Sullust (mentionn&eacute;e dans le m&ecirc;me film), Jakku (provenant de&nbsp;Le R&eacute;veil de la Force) et Scarif (venant de&nbsp;Rogue One: A Star Wars Story) sont les principaux th&eacute;&acirc;tres de guerre tout comme l&#39;&Eacute;toile de la mort, la base militaire de l&#39;Empire galactique5.</p>\r\n', 1),
 (12, 'Dragon ball Xenoverse 2', '32', '2017-04-03', 1, '1487591974.jpg', 0, NULL, '<p>Un an apr&egrave;s le premier opus, Dragon Ball Xenoverse revient dans un nouveau jeu qui revendique l&#39;univers le plus d&eacute;taill&eacute; de tous les jeux Dragon Ball. Le jeu reprend la recette du premier Dragon Ball Xenoverse avec des bases de MMORPG et le retour des policiers du temps qui doivent prot&eacute;ger l&#39;histoire.&nbsp;</p>\r\n', 1),
 (13, 'For Honor', '39.95', '2017-02-19', 5, '1487539103.jpg', 2670, NULL, 'For honor est un jeu d&#39;action/beat&#39;em all dans un univers m&eacute;di&eacute;val\r\n', 1),
-(14, 'Warhammer 40000 : Dawn of War 3 ', '34.99', '2017-04-12', 5, '1491987555.jpg', 5, NULL, 'Prenez part &agrave; des batailles sans merci parmi trois factions\r\n\r\nDans Dawn of War&reg; III, vous devez affronter vos ennemis tandis qu&#39;une arme extr&ecirc;mement dangereuse vient d&#39;&ecirc;tre d&eacute;couverte dans le monde myst&eacute;rieux d&#39;Acheron.\r\n\r\n\r\nTandis que la guerre fait rage, la supr&eacute;matie sera synonyme de survie sur une plan&egrave;te assi&eacute;g&eacute;e par les arm&eacute;es du seigneur Gorgutz, un Orque des plus voraces, de Macha, ambitieux proph&egrave;te des Eldars, et du puissant commandant des Space Marines, Gabriel Angelos\r\n', 1),
+(14, 'Warhammer 40000 : Dawn of War 3 ', '33.99', '2017-04-21', 1, '1491987555.jpg', 5, NULL, '<p>Prenez part &agrave; des batailles sans merci parmi trois factions Dans Dawn of War&reg; III, vous devez affronter vos ennemis tandis qu&#39;une arme extr&ecirc;mement dangereuse vient d&#39;&ecirc;tre d&eacute;couverte dans le monde myst&eacute;rieux d&#39;Acheron. Tandis que la guerre fait rage, la supr&eacute;matie sera synonyme de survie sur une plan&egrave;te assi&eacute;g&eacute;e par les arm&eacute;es du seigneur Gorgutz, un Orque des plus voraces, de Macha, ambitieux proph&egrave;te des Eldars, et du puissant commandant des Space Marines, Gabriel Angelos</p>\r\n', 1),
 (15, 'H1Z1', '20.99', '2017-04-12', 3, '1491987640.jpg', 7, NULL, 'H1Z1 is currently in Early Access on Steam. With a fully transparent approach to game design and development here at Daybreak Games, we want to transform the way our players interact and participate with our games. H1Z1 Early Access is your chance to experience and make a difference in H1Z1 as it evolves throughout the development process.&nbsp;\r\n', 1);
 
 -- --------------------------------------------------------
@@ -244,6 +266,7 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
+  `avatar` varchar(100) DEFAULT NULL,
   `levelUser` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -251,15 +274,24 @@ CREATE TABLE `users` (
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `firstname`, `username`, `password`, `mail`, `levelUser`) VALUES
-(1, 'gér', 'Flo', 'modo', '$2y$10$uax1uRAIgLgifL5QPuDoq.P0inM75vSzj9frznpSWGK8XOFN/O87i', 'modo@hotmail.fr', 2),
-(3, 'nic', 'pol', 'user', '$2y$10$Pb206riroSduHj9INO7Bou0sgzfU3R3HeW2FBLXGXAWSpbEi2gnpG', 'user1@hotmail.fr', 1),
-(4, 'mat', 'mut', 'admin', '$2y$10$HRprY87Fl/HkVkCc2JPyteF75sxHMLS04HMnzAFw/DDbcXsFTEHsO', 'admin@hotmail.fr', 3),
-(9, 'god', 'div', 'webdev', '$2y$10$OLd7Fx8l0fjmBcFIHm2EtuoCEtokjZ6Z3lrozdfbl98OvBYMLYUre', 'webdev@hotmail.fr', 4);
+INSERT INTO `users` (`id`, `name`, `firstname`, `username`, `password`, `mail`, `avatar`, `levelUser`) VALUES
+(1, 'gér', 'Flo', 'modo', '$2y$10$uax1uRAIgLgifL5QPuDoq.P0inM75vSzj9frznpSWGK8XOFN/O87i', 'modo@hotmail.fr', NULL, 2),
+(3, 'nic', 'pol', 'user', '$2y$10$Pb206riroSduHj9INO7Bou0sgzfU3R3HeW2FBLXGXAWSpbEi2gnpG', 'user1@hotmail.fr', NULL, 1),
+(4, 'mat', 'mut', 'admin', '$2y$10$HRprY87Fl/HkVkCc2JPyteF75sxHMLS04HMnzAFw/DDbcXsFTEHsO', 'admin@hotmail.fr', NULL, 3),
+(9, 'god', 'div', 'webdev', '$2y$10$OLd7Fx8l0fjmBcFIHm2EtuoCEtokjZ6Z3lrozdfbl98OvBYMLYUre', 'webdev@hotmail.fr', NULL, 4);
 
 --
 -- Index pour les tables exportées
 --
+
+--
+-- Index pour la table `avis_jeux`
+--
+ALTER TABLE `avis_jeux`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `user_id_2` (`user_id`),
+  ADD KEY `jeux_id` (`jeux_id`);
 
 --
 -- Index pour la table `categorie`
@@ -324,6 +356,11 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT pour la table `avis_jeux`
+--
+ALTER TABLE `avis_jeux`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
@@ -332,7 +369,7 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT pour la table `cat_join`
 --
 ALTER TABLE `cat_join`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT pour la table `comments`
 --
@@ -367,10 +404,17 @@ ALTER TABLE `slides`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Contraintes pour les tables exportées
 --
+
+--
+-- Contraintes pour la table `avis_jeux`
+--
+ALTER TABLE `avis_jeux`
+  ADD CONSTRAINT `cstr_idjeux_avis_jeux` FOREIGN KEY (`jeux_id`) REFERENCES `jeux` (`id`),
+  ADD CONSTRAINT `cstr_iduser_avis_jeux` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Contraintes pour la table `cat_join`
