@@ -11,17 +11,10 @@
 $('.menu .item')
     .tab();
 
+$('.ui.dropdown')
+    .dropdown({
 
-$('.ui.rating')
-    .rating({
-        maxRating: 5,
-        onRate: function (rating) {
-            console.log(rating)
-        }
-    });
-
-
-
-
+    })
+;
 
 

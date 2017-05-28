@@ -26,6 +26,7 @@ elseif($_GET['page'] == 'logout') {
 // Page d'accueil -----------------
 if($_GET['page'] == 'accueil') {
     require "includes/slider.inc.php";
+    var_dump($_GET);
     ?>
 
     <div class="ui container">
@@ -190,18 +191,28 @@ require "includes/formlogin.php";
 
 <?php
 //Page Catalogue --------
-}
-elseif($_GET['page'] == 'catalogue') {
-    echo '<div class="ui container">
+} ?>
+<?php if($_GET['page'] == 'catalogue'):?>
+    <div class="ui container">
         <div class="ui two column stackable grid">
-            <div class="two column row">';
-    require "includes/formlogin.php";
-    echo '<div class="thirteen wide column">
-                    <h4 class="ui header segment center aligned">Jeux</h4>';
+            <div class="two column row">
+    <?php require_once "includes/formlogin.php";?>
+    <?php
+        $sql="SELECT * FROM categorie";
+        $result = $dbh->prepare($sql);
+        $result->execute();
+    ?>
+        <div class="three wide column">
 
-//Affichage d'un jeu ------
+        </div>
+    </div>
 
-    if (isset($_GET['id'])) {
+    <div class="thirteen wide column">
+           <h3 class="ui header center aligned segment">Jeux</h3>
+
+<!– Affichage d'un seul jeu –>
+
+    <?php if(isset($_GET['id'])) {
         $sql = "SELECT *, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`
                 FROM jeux
                 LEFT JOIN avis_jeux
@@ -211,7 +222,7 @@ elseif($_GET['page'] == 'catalogue') {
                 WHERE jeux.id = :id";
         $result = $dbh->prepare($sql);
         $result->execute(['id' => $_GET['id']]);
-        $jeux = $result->fetchObject();
+        $jeux = $jeux = $result->fetchObject();
         $sql2 = "SELECT *
                 FROM categorie
                 LEFT JOIN cat_join  
@@ -268,18 +279,50 @@ elseif($_GET['page'] == 'catalogue') {
                 </div>
             </div>
             <div class="ui bottom attached tab segment" data-tab="third">
-                <p><b><?=$jeux->username?></b></p>
-                <p><?=$jeux->text?></p>
-                <?php for ($i = 1; $i <= 5; $i++):
-                    if ($i <= $jeux->avis_eval): ?>
-                        <i class="star icon"></i>
-                    <?php else: ?>
-                        <i class="empty star icon"></i>
-                    <?php endif; ?>
-                <?php endfor; ?>
-                <div class="ui star rating" data-rating="0" data-max-rating="5"></div>
-                <textarea id="edit" name="edit"></textarea>
-                <a class="ui single blue button">Envoyer</a>
+                <div class="ui four cards">
+                <?php while($jeux = $result->fetchObject()): ?>
+                    <div class="card">
+                        <div class="content">
+                            <div class="header"><?=$jeux->username?></div>
+                            <div class="description"><p><?=$jeux->text?></p></div>
+                        </div>
+                            <div class="extra content">
+                                Rating:
+                                <?php for ($i = 1; $i <= 5; $i++):
+                                    if ($i <= $jeux->avis_eval): ?>
+                                        <i class="star icon"></i>
+                                    <?php else: ?>
+                                        <i class="empty star icon"></i>
+                                    <?php endif; ?>
+                                <?php endfor; ?>
+                            </div>
+
+                    </div>
+                <?php endwhile; ?>
+                </div>
+                <form id="form-avis" action="actions/addAvis.php" method="post">
+                    <div class="ui two stackable grid">
+                        <div class="three wide column">
+                            <input type="hidden" name="userId" value="<?= $_SESSION['auth']->id ?>">
+                            <input type="hidden" name="jeuxId" value="<?= $_GET['id'] ?>">
+                            <h4>Evaluation</h4>
+                            <label for="eval">
+                                <select name="eval" class="ui fluid dropdown">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <h4>Commentaire</h4>
+                    <label for="edit">
+                        <textarea id="edit" name="edit"></textarea>
+                    </label>
+                    <input class="ui single blue button" type="submit" id="envoyer" value="Envoyer"/>
+                </form>
             </div>
         </div>
 
@@ -295,6 +338,19 @@ elseif($_GET['page'] == 'catalogue') {
             ORDER BY datePub DESC
             LIMIT 8";
     }
+    elseif(isset($_GET['tri'])){
+        switch($_GET['tri']){
+            case 'prix':
+                $sql = "SELECT * FROM jeux ORDER BY prix ASC";
+                break;
+            case 'date':
+                $sql = "SELECT * FROM jeux ORDER BY datepub DESC";
+                break;
+            case 'eval':
+                $sql = "SELECT * FROM jeux ORDER BY eval DESC";
+                break;
+        }
+    }
     else{
         $sql = "SELECT *
         FROM jeux
@@ -304,6 +360,18 @@ elseif($_GET['page'] == 'catalogue') {
     $affichagecatalogue = $dbh->prepare($sql);
     $affichagecatalogue->execute();
 ?>
+        <div class="ui text menu">
+            <div class="header item">Trier par</div>
+            <a class="item active" href="?page=catalogue&tri=prix">
+                Prix
+            </a>
+            <a class="item" href="?page=catalogue&tri=date">
+                Date de sortie
+            </a>
+            <a class="item" href="?page=catalogue&tri=eval">
+                Evaluation
+            </a>
+        </div>
                 <?php while($jeux =$affichagecatalogue->fetchObject()):?>
 
                         <div class="ui two stackable grid vertical segment">
@@ -343,10 +411,10 @@ elseif($_GET['page'] == 'catalogue') {
             </div>
         </div>
         </div>';
-
+    ?>
 // Affichage de la pagination
-}
-?>
+<?php endif; ?>
+
 
 <?php
 //Page "News" -------------

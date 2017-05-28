@@ -4,8 +4,8 @@
 }
 
 h3 {
-    font-family: 'Nova Square', cursive !important;
-    font-size: 1.1em !important;
+    font-family: 'Nova Square', cursive;
+    font-size: 1.1em;
 }
 
 li {
@@ -15,7 +15,6 @@ li {
 a {
     font-family: 'Carrois Gothic SC', sans-serif !important;
 }
-
 
 /* nav */
 
@@ -75,7 +74,11 @@ li.glide__slide div {
     position: absolute;
 }
 
-/* Content */
+/* Content & sidebar */
+
+.ui.header.center.aligned.segment {
+    margin-top: 10px;
+}
 
 /* Bouton */
 .ui.fluid.large.teal.submit.button {

@@ -35,9 +35,7 @@
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
-
-
-
-</form>
-
+<?php if($_GET['page']!='catalogue'):?>
 </div>
+<?php endif;?>
+</form>

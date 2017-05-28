@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 26 Mai 2017 à 11:11
+-- Généré le :  Dim 28 Mai 2017 à 12:02
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -39,7 +39,16 @@ CREATE TABLE `avis_jeux` (
 --
 
 INSERT INTO `avis_jeux` (`id`, `user_id`, `jeux_id`, `text`, `avis_eval`) VALUES
-(3, 3, 14, 'merci g2p, le jeu est génial et votre service est très rapide !', 3);
+(3, 3, 14, 'merci g2p, le jeu est génial et votre service est très rapide !', 3),
+(4, 3, 5, '<p>bien</p>\r\n', 1),
+(5, 3, 5, '<p>super, merci</p>\r\n', 1),
+(6, 9, 5, '<p>Impec</p>\r\n', 3),
+(7, 9, 5, '<p>Test cards</p>\r\n', 1),
+(8, 9, 5, '<p>Test cards 2</p>\r\n', 1),
+(9, 9, 5, '<p>Test cards 3</p>\r\n', 1),
+(10, 9, 5, '<p>Test cards 3</p>\r\n', 1),
+(11, 9, 5, '<p>Test cards 3</p>\r\n', 1),
+(12, 9, 5, '<p>Test cards 3</p>\r\n', 1);
 
 -- --------------------------------------------------------
 
@@ -93,10 +102,9 @@ INSERT INTO `cat_join` (`id`, `jeux_id`, `categorie_id`) VALUES
 (32, 11, 7),
 (33, 4, 1),
 (34, 4, 5),
+(35, 14, 3),
 (36, 15, 1),
-(37, 15, 8),
-(38, 14, 3),
-(39, 14, 7);
+(37, 15, 8);
 
 -- --------------------------------------------------------
 
@@ -108,7 +116,7 @@ CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `content` longtext,
   `parent_id` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `comments`
@@ -148,12 +156,12 @@ INSERT INTO `jeux` (`id`, `title`, `prix`, `datePub`, `eval`, `imgSmall`, `quant
 (1, 'Overwatch', '36.00', '2016-05-24', 5, 'overwatchMin.jpg', 243, 60, 'Soldats. Scientifiques. Aventuriers. Marginaux.\r\nDans une période de crise mondiale, des héros venus de tous les horizons ont composé une équipe d’intervention internationale pour ramener la paix dans un monde déchiré par la guerre : OVERWATCH.\r\n\r\nCette organisation a mis fin à la crise et préservé la paix pendant les décennies suivantes, inspiré une ère d’exploration, d’innovation et de découvertes. Mais après bien des années, son influence s’est étiolée, et elle a finalement été dissoute. Overwatch a disparu… mais le monde a toujours besoin de héros.\r\n\r\nOverwatch est un jeu de tir par équipe où des héros s\'affrontent dans un monde déchiré par la guerre.', 1),
 (3, 'Battlefield 1', '25.00', '2016-10-21', 5, 'Battlefield1min.jpg', 230, 200, 'Battlefield 1 vous ramène au temps de la Première Guerre mondiale, où les nouvelles technologies et les conflits mondiaux ont marqué les débuts de la guerre moderne. Participez à chaque bataille, contrôlez des véhicules gigantesques et exécutez des manœuvres qui changeront le cours du combat. Le monde entier est en guerre. Découvrez ce qui se trouve au-delà des tranchées.', 1),
 (4, 'Dishonored 2', '24.40', '2017-04-04', 1, 'dishonored2Min.jpg', 0, 15, '<p>Endossez &agrave; nouveau le r&ocirc;le d&#39;assassin surnaturel dans Dishonored 2, le nouveau chapitre tant attendu de Dishonored, la saga maintes fois r&eacute;compens&eacute;e sign&eacute;e Arkane Studios. Explorez &agrave; votre mani&egrave;re un monde o&ugrave; mysticisme et industrialisation cohabitent. Choisirez-vous d&#39;incarner l&#39;Imp&eacute;ratrice Emily Kaldwin, ou le Protecteur royal Corvo Attano ? Traverserez-vous le jeu comme une ombre insaisissable, ferez-vous un usage immod&eacute;r&eacute; du redoutable syst&egrave;me de combat, ou un peu des deux ? Comment allez-vous combiner les pouvoirs uniques, les armes et les gadgets de votre personnage pour &eacute;liminer vos ennemis ? Au fil des missions &eacute;labor&eacute;es de main de ma&icirc;tre, vos choix r&eacute;&eacute;criront l&#39;histoire et m&egrave;neront &agrave; des d&eacute;nouements inattendus.</p>\r\n', 1),
-(5, 'Borderlands 2 ', '9.80', '2012-10-12', 2, 'borderlands2Min.jpg', 70, 40, 'Une nouvelle ère de jeu de tir et de découverte débarque. Incarnez l\'un des 4 chasseurs d\'Arche et affrontez un gigantesque monde de créatures et de sociopathes, sans oublier le diabolique Beau Jack. Faites-vous de nouveaux amis, armez-les jusqu\'aux dents et combattez ensemble à 4 en coopération dans une quête de vengeance et de rédemption sur une planète vivante imprévisible et inexplorée.', 1),
+(5, 'Borderlands 2 ', '17.50', '2017-05-26', 1, 'borderlands2Min.jpg', 70, 40, '<p>Une nouvelle &egrave;re de jeu de tir et de d&eacute;couverte d&eacute;barque. Incarnez l&#39;un des 4 chasseurs d&#39;Arche et affrontez un gigantesque monde de cr&eacute;atures et de sociopathes, sans oublier le diabolique Beau Jack. Faites-vous de nouveaux amis, armez-les jusqu&#39;aux dents et combattez ensemble &agrave; 4 en coop&eacute;ration dans une qu&ecirc;te de vengeance et de r&eacute;demption sur une plan&egrave;te vivante impr&eacute;visible et inexplor&eacute;e.</p>\r\n', 1),
 (10, 'World of warcraft : Legion', '20.99', '2017-02-19', 5, '1487538447.jpg', 2250, NULL, 'La L&eacute;gion ardente est de retour en Azeroth, 10000 ans apr&egrave;s sa derni&egrave;re venue qui avait scind&eacute; les continents juste apr&egrave;s que Illidan Hurlorage arrive, for&ccedil;ant les arm&eacute;es de l&#39;Alliance et de la Horde &agrave; s&#39;unir afin d&#39;affronter le plus grand p&eacute;ril jamais rencontr&eacute;. Mais ils seront aid&eacute;s par les Chasseurs de D&eacute;mons, nouvelle classe annonc&eacute;e lors de la gamescom annon&ccedil;ant l&#39;extension. Niveau maximum mont&eacute; &agrave; 110, nouveaux arbres de talents, nouvelles zones...\r\n\r\nVous pouvez cr&eacute;er un personnage niveau 100 &agrave; l&#39;essai de classe si vous voulez modifier votre S&eacute;same.\r\n', 1),
 (11, 'Star wars battle front', '26', '2017-04-03', 1, '1487538514.jpg', 327, NULL, '<p>Le jeu se concentre sur cinq films de la saga&nbsp;Star Wars,&nbsp;Rogue One: A Star Wars Story,&nbsp;Un nouvel espoir,&nbsp;L&#39;Empire contre-attaque,&nbsp;Le Retour du Jedi&nbsp;et&nbsp;Le R&eacute;veil de la Force.&nbsp;Star Wars Battlefront&nbsp;met en sc&egrave;ne des combats arm&eacute;s entre les forces de l&#39;Empire galactique et d&#39;une organisation s&#39;y opposant, l&#39;Alliance rebelle (parfois appel&eacute;e la R&eacute;bellion) sur diverses plan&egrave;tes de la galaxie fictive. Ainsi, les plan&egrave;tes Tatooine (apparaissant d&egrave;s&nbsp;Un nouvel espoir), Hoth, Bespin (issues de&nbsp;L&#39;Empire contre-attaque), Endor (vue dans&nbsp;Le Retour du Jedi), Sullust (mentionn&eacute;e dans le m&ecirc;me film), Jakku (provenant de&nbsp;Le R&eacute;veil de la Force) et Scarif (venant de&nbsp;Rogue One: A Star Wars Story) sont les principaux th&eacute;&acirc;tres de guerre tout comme l&#39;&Eacute;toile de la mort, la base militaire de l&#39;Empire galactique5.</p>\r\n', 1),
 (12, 'Dragon ball Xenoverse 2', '32', '2017-04-03', 1, '1487591974.jpg', 0, NULL, '<p>Un an apr&egrave;s le premier opus, Dragon Ball Xenoverse revient dans un nouveau jeu qui revendique l&#39;univers le plus d&eacute;taill&eacute; de tous les jeux Dragon Ball. Le jeu reprend la recette du premier Dragon Ball Xenoverse avec des bases de MMORPG et le retour des policiers du temps qui doivent prot&eacute;ger l&#39;histoire.&nbsp;</p>\r\n', 1),
 (13, 'For Honor', '39.95', '2017-02-19', 5, '1487539103.jpg', 2670, NULL, 'For honor est un jeu d&#39;action/beat&#39;em all dans un univers m&eacute;di&eacute;val\r\n', 1),
-(14, 'Warhammer 40000 : Dawn of War 3 ', '33.99', '2017-04-21', 1, '1491987555.jpg', 5, NULL, '<p>Prenez part &agrave; des batailles sans merci parmi trois factions Dans Dawn of War&reg; III, vous devez affronter vos ennemis tandis qu&#39;une arme extr&ecirc;mement dangereuse vient d&#39;&ecirc;tre d&eacute;couverte dans le monde myst&eacute;rieux d&#39;Acheron. Tandis que la guerre fait rage, la supr&eacute;matie sera synonyme de survie sur une plan&egrave;te assi&eacute;g&eacute;e par les arm&eacute;es du seigneur Gorgutz, un Orque des plus voraces, de Macha, ambitieux proph&egrave;te des Eldars, et du puissant commandant des Space Marines, Gabriel Angelos</p>\r\n', 1),
+(14, 'Warhammer 40000 : Dawn of War 3 ', '34.99', '2017-04-12', 5, '1491987555.jpg', 5, NULL, 'Prenez part &agrave; des batailles sans merci parmi trois factions\r\n\r\nDans Dawn of War&reg; III, vous devez affronter vos ennemis tandis qu&#39;une arme extr&ecirc;mement dangereuse vient d&#39;&ecirc;tre d&eacute;couverte dans le monde myst&eacute;rieux d&#39;Acheron.\r\n\r\n\r\nTandis que la guerre fait rage, la supr&eacute;matie sera synonyme de survie sur une plan&egrave;te assi&eacute;g&eacute;e par les arm&eacute;es du seigneur Gorgutz, un Orque des plus voraces, de Macha, ambitieux proph&egrave;te des Eldars, et du puissant commandant des Space Marines, Gabriel Angelos\r\n', 1),
 (15, 'H1Z1', '20.99', '2017-04-12', 3, '1491987640.jpg', 7, NULL, 'H1Z1 is currently in Early Access on Steam. With a fully transparent approach to game design and development here at Daybreak Games, we want to transform the way our players interact and participate with our games. H1Z1 Early Access is your chance to experience and make a difference in H1Z1 as it evolves throughout the development process.&nbsp;\r\n', 1);
 
 -- --------------------------------------------------------
@@ -266,7 +274,6 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
-  `avatar` varchar(100) DEFAULT NULL,
   `levelUser` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -274,11 +281,11 @@ CREATE TABLE `users` (
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `firstname`, `username`, `password`, `mail`, `avatar`, `levelUser`) VALUES
-(1, 'gér', 'Flo', 'modo', '$2y$10$uax1uRAIgLgifL5QPuDoq.P0inM75vSzj9frznpSWGK8XOFN/O87i', 'modo@hotmail.fr', NULL, 2),
-(3, 'nic', 'pol', 'user', '$2y$10$Pb206riroSduHj9INO7Bou0sgzfU3R3HeW2FBLXGXAWSpbEi2gnpG', 'user1@hotmail.fr', NULL, 1),
-(4, 'mat', 'mut', 'admin', '$2y$10$HRprY87Fl/HkVkCc2JPyteF75sxHMLS04HMnzAFw/DDbcXsFTEHsO', 'admin@hotmail.fr', NULL, 3),
-(9, 'god', 'div', 'webdev', '$2y$10$OLd7Fx8l0fjmBcFIHm2EtuoCEtokjZ6Z3lrozdfbl98OvBYMLYUre', 'webdev@hotmail.fr', NULL, 4);
+INSERT INTO `users` (`id`, `name`, `firstname`, `username`, `password`, `mail`, `levelUser`) VALUES
+(1, 'gér', 'Flo', 'modo', '$2y$10$uax1uRAIgLgifL5QPuDoq.P0inM75vSzj9frznpSWGK8XOFN/O87i', 'modo@hotmail.fr', 2),
+(3, 'nic', 'pol', 'user', '$2y$10$Pb206riroSduHj9INO7Bou0sgzfU3R3HeW2FBLXGXAWSpbEi2gnpG', 'user1@hotmail.fr', 1),
+(4, 'mat', 'mut', 'admin', '$2y$10$HRprY87Fl/HkVkCc2JPyteF75sxHMLS04HMnzAFw/DDbcXsFTEHsO', 'admin@hotmail.fr', 3),
+(9, 'god', 'div', 'webdev', '$2y$10$OLd7Fx8l0fjmBcFIHm2EtuoCEtokjZ6Z3lrozdfbl98OvBYMLYUre', 'webdev@hotmail.fr', 4);
 
 --
 -- Index pour les tables exportées
@@ -359,7 +366,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `avis_jeux`
 --
 ALTER TABLE `avis_jeux`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT pour la table `categorie`
 --
