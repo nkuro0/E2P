@@ -3,7 +3,7 @@ if($_SESSION['auth']->levelUser <= 2){
     echo '<h2>Vous n\'avez pas les droits pour modifier les jeux disponible</h2>';
 }
 else {
-$sql ="SELECT id, title, prix, eval, quantity, quantitySold, DATE_FORMAT(datePub, '%d/%m/%y') AS `date`, imgSmall, quantity, description, view
+$sql ="SELECT id, title, prix, quantity, quantitySold, DATE_FORMAT(datePub, '%d/%m/%y') AS `date`, imgSmall, quantity, description, view
 FROM jeux ORDER BY datePub DESC";
 $result = $dbh->query($sql);
 
@@ -16,7 +16,6 @@ $result = $dbh->query($sql);
         <th>Titre</th>
         <th>Date Création</th>
         <th>prix</th>
-        <th>Evaluation</th>
         <th>quantité</th>
         <th>Description</th>
         <th>Modifier</th>
@@ -30,7 +29,6 @@ $result = $dbh->query($sql);
             <td><?=$row->title?></td>
             <td><?=$row->date?></td>
             <td><?=$row->prix?>€</td>
-            <td><?=$row->eval?></td>
             <td><?=$row->quantity?></td>
             <td><?= $cuttext->justcut($row->description)?></td>
             <td><a href="?forms=jeuxupdate&id=<?=$row->id?>" class="btn btn-info btn-circle"><i class="fa fa-pencil"></i></a></td>

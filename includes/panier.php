@@ -16,7 +16,6 @@ if(empty($_SESSION['panier'])) {
         $req->execute();
         ?>
 
-
                 <div class="thirteen wide column">
                 <table class="ui celled padded table">
                     <thead>

@@ -51,6 +51,10 @@ li.glide__slide div {
     margin:auto;
 }
 
+img .img-slider{
+    width:100%;
+}
+
 img.logo {
     width: 75px !important;
 }
@@ -102,6 +106,15 @@ img.logo {
 iframe{
     width: 100%;
     min-height: 300px;
+}
+
+.description p{
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.ui.grid.inscription{
+    padding-top: 0px;
 }
 
 /* Bouton */

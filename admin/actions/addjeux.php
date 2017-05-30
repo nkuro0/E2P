@@ -18,10 +18,11 @@ $check = $check_img->check($_FILES['image']);
         $title = strip_tags(($_POST["title"]));
         $prix = floatval($_POST["prix"]);
         $category = $_POST['categorie'];
-        $eval = intval($_POST['eval']);
         $quantity = intval($_POST['quantity']);
         $description = strip_tags($_POST['description']);
         $view = strip_tags($_POST['view']);
+        $idAdmin = intval($_POST['id-admin']);
+        $evalAdmin = intval($_POST['eval-admin']);
         $error = '';
 
         if ($fichier = 'Error'){
@@ -35,7 +36,7 @@ $check = $check_img->check($_FILES['image']);
             $error.='Le titre doit être inférieur à 50 caractère';
         }
         if($error==''){
-            $sql = "INSERT INTO jeux (title, prix, datePub, eval, imgSmall, quantity, description, view)  VALUES ('$title', '$prix', CURDATE(), '$eval', '$fichier', '$quantity', '$description', '$view')";
+            $sql = "INSERT INTO jeux (title, prix, datePub, imgSmall, quantity, description, view)  VALUES ('$title', '$prix', CURDATE(), '$fichier', '$quantity', '$description', '$view')";
             $result = $dbh->prepare($sql);
             $result->execute();
             $jeuxInsertedId = $dbh->lastInsertId();
@@ -44,6 +45,13 @@ $check = $check_img->check($_FILES['image']);
                 $result2 = $dbh->prepare($sql2);
                 $result2->execute();
             }
+            $sql = "INSERT INTO avis_jeux (avis_jeux_id, avis_user_id) VALUES ('$jeuxInsertedId', '$idAdmin')";
+            $result = $dbh->prepare($sql);
+            $result->execute();
+            $avisJeuxInsertedId = $dbh->lastInsertId();
+            $sql = "INSERT INTO avis_join (jeux_id, user_id, avis_id, avis_eval) VALUES('$jeuxInsertedId', '$idAdmin','$avisJeuxInsertedId', '$evalAdmin')";
+            $result = $dbh->prepare($sql);
+            $result->execute();
             header('location: ../index.php?page=jeux');
         }
         else{

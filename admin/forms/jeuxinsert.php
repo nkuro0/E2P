@@ -22,16 +22,6 @@ $result->execute();
 
     </div>
     <div class="form-group">
-        <label for="eval">Evaluation du jeu</label>
-        <select name="eval" class="form-control" id="evalSelect">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-    </div>
-    <div class="form-group">
         <label for="quantity">Quantité en stock</label>
         <input type="number" name="quantity" id="quantity" class="form-control" required>
     </div>
@@ -46,6 +36,8 @@ $result->execute();
             <option value="0">Non</option>
         </select>
     </div>
+    <input type="hidden" name="eval-admin" value="0">
+    <input type="hidden" name="id-admin" value="9">
     <div class="form-group">
         <label for="description">Description du jeu</label>
         <textarea name="description" id="description" class="form-control"></textarea>

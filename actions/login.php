@@ -1,5 +1,5 @@
 <?php
-
+$page = $_POST['page'];
 if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])){
     require '../includes/config.inc.php';
     require '../lib/DB.php';
@@ -14,12 +14,13 @@ if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])){
         $_SESSION['lvluser'] =
         $_SESSION['flash']['success'] = 'Vous êtes maintenant bien connecté';
 
-        header('Location: ../index.php');
+        header('Location: ../index.php?page='.$page);
     }
 }
 
 if (empty($_SESSION['auth'])) {
-    header('Location: ../index.php');
+    header('Location: ../index.php?page='.$page);
 }
+
 
 ?>

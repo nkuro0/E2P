@@ -24,7 +24,7 @@ $resultMenu->execute();
                     <p id="slidetitle"><?=$slides->title?></p>
                     <p id="slideprice"><?=$slides->prix?>€</p>
                     </div>
-                    <img src="img/slider/<?= $slides->img ?>">
+                    <img class="img-slider" src="img/slider/<?= $slides->img ?>">
                 </li>
                 <?php endwhile;?>
             </ul>

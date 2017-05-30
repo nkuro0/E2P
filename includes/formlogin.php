@@ -4,6 +4,7 @@
 
 <form action="actions/login.php" method="POST">
     <?php if(!isset($_SESSION['auth'])):?>
+        <input type="hidden" name="page" value="<?=$_GET['page']?>">
         <div class="field">
             <div class="ui left icon input">
                 <i class="user icon"></i>
@@ -26,7 +27,7 @@
     <?php endif; ?>
 
         <a href="?page=inscription"><div class="ui fluid large teal submit button">Inscription</div></a>
-        <div class="ui fluid large teal submit button" data-api="smartsupp" data-operation="open" data-text="Hello..."/>Support</div>
+        <div class="ui fluid large teal submit button" data-api="smartsupp" data-operation="open" data-text="Bonjour, veuillez nous faire part de votre problème"/>Support</div>
     <?php if(isset($_SESSION['flash'])): ?>
         <?php foreach($_SESSION['flash'] as $type => $message): ?>
             <div class="ui center aligned green segment">

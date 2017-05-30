@@ -50,6 +50,8 @@ $page = $result->fetchObject();
             c.type='text/javascript';c.charset='utf-8';c.async=true;
             c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
         })(document);
+        smartsupp('email', '<?=$_SESSION['auth']->mail?>');
+        smartsupp('name', '<?=$_SESSION['auth']->name?> <?=$_SESSION['auth']->firstname?>');
     </script>
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Nova+Square" rel="stylesheet">
