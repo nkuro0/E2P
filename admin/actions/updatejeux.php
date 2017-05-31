@@ -19,10 +19,9 @@ $row = $res->fetchobject();
 if(isset($_POST)) {
 
         $sql = "UPDATE jeux
-                SET title=    :title,
+                SET title= :title,
                     prix= :prix,
                     datePub= CURDATE(),
-                    eval= :eval,
                     quantity= :quantity,
                     view= :view,
                     description= :description
@@ -33,7 +32,6 @@ if(isset($_POST)) {
             [
                 'title' => $_POST['title'],
                 'prix' => $_POST['prix'],
-                'eval' => $_POST['eval'],
                 'quantity' => $_POST['quantity'],
                 'view' => $_POST['view'],
                 'description' => $_POST['description'],
@@ -55,7 +53,6 @@ if(isset($_POST)) {
         $result3 = $dbh->prepare($sql3);
         $result3->execute();
     }
-
 
     if (isset($_FILES['image']) && ($_FILES['image']['error'] == 0)) {
         list($width, $height, $type, $attr) = getimagesize($_FILES['image']['tmp_name']);
@@ -105,6 +102,7 @@ if(isset($_POST)) {
         $result->execute(
             [
                 'img' => $fichier,
+                'id' => $id,
             ]
         );
     }

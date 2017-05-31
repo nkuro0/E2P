@@ -39,15 +39,15 @@ class Check_img
         return true;
     }
 
-    public function upload($date, $file){
+    public function upload($name, $file){
         //Définition nom de fichier
-        $fichier = $date . $this->extension;
+        $fichier = $name . $this->extension;
         //Verification upload
-        if (move_uploaded_file($file['tmp_name'], $this->folder . $fichier)) {
-            $fp = @fopen($this->folder . $fichier, 'r');
+        if (move_uploaded_file($file['tmp_name'], $this->folder.$fichier)) {
+            $fp = @fopen($this->folder.$fichier, 'r');
             //Vérification de lecture du fichier
             if (!$fp) {
-                unlink($this->folder . $fichier);
+                unlink($this->folder.$fichier);
                 return 'Error';
             }
         }

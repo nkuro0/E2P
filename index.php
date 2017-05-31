@@ -36,13 +36,18 @@ if($_GET['page'] == 'accueil') {
 require "includes/formlogin.php";
 
 //Affichage "Maintenant disponible" --------------
+    $rightSql = "SELECT id, title, quantity, description, prix, imgSmall, DATE_FORMAT(datePub, '%d/%m/%y') AS `date`
+                 FROM jeux
+                 WHERE `view` = 1
+                 ";
+    $tri_autorises = array('quantity','title', 'prix', 'date');
+    $order_by = in_array($_GET['order'],$tri_autorises) ? $_GET['order'] : 'date';
+    $order_dir = isset($_GET['inverse']) ? 'DESC' : 'ASC';
+    $sql = $rightSql.'ORDER BY '.$order_by.' '.$order_dir;
 
-    $sql = "SELECT id, title, quantity, description, prix, imgSmall, DATE_FORMAT(datePub, '%d/%m/%y') AS `date`
-            FROM jeux
-            WHERE `view` = 1
-            ORDER BY date ASC ";
     $affichagejeux = $dbh->prepare($sql);
     $affichagejeux->execute();
+
     ?>
             <!-- Affichage Maintenant disponible -->
 <div class="ui ten wide column "><h3 class="ui header center aligned segment">Maintenant disponible</h3>

@@ -14,7 +14,7 @@ if(isset($_POST)){
 $check = $check_img->check($_FILES['image']);
     if($check===true){
 
-        $fichier = $check_img->upload(time(), $_FILES['image']);
+        $fichier = $check_img->upload($_FILES['image']['name'], $_FILES['image']);
         $title = strip_tags(($_POST["title"]));
         $prix = floatval($_POST["prix"]);
         $category = $_POST['categorie'];
@@ -35,6 +35,7 @@ $check = $check_img->check($_FILES['image']);
         if(strlen($title)>100){
             $error.='Le titre doit être inférieur à 50 caractère';
         }
+
         if($error==''){
             $sql = "INSERT INTO jeux (title, prix, datePub, imgSmall, quantity, description, view)  VALUES ('$title', '$prix', CURDATE(), '$fichier', '$quantity', '$description', '$view')";
             $result = $dbh->prepare($sql);

@@ -82,6 +82,7 @@ if(isset($_POST)) {
         $result->execute(
             [
                 'img' => $fichier,
+                'id' => $id
             ]
         );
     }

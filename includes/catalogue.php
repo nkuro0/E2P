@@ -3,11 +3,6 @@
     <div class="ui two column stackable grid">
         <div class="two column row">
             <?php require_once "includes/formlogin.php";?>
-            <?php
-            $sql="SELECT * FROM categorie";
-            $result = $dbh->prepare($sql);
-            $result->execute();
-            ?>
             <div class="three wide column">
             </div>
         </div>
@@ -20,8 +15,8 @@
             <?php if(isset($_GET['id'])) {
                 $sql = "SELECT jeux.id, jeux.title, jeux.prix, jeux.quantity, jeux.datePub, jeux.imgSmall, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`, jeux.description, avis_jeux.text, avis_jeux.avis_user_id, avis_jeux.avis_jeux_id, avis_join.avis_eval, users.username
                 FROM jeux 
-                INNER JOIN avis_jeux ON avis_jeux.avis_jeux_id = jeux.id 
-                INNER JOIN users ON users.id = avis_jeux.avis_user_id 
+                INNER JOIN avis_jeux ON avis_jeux.avis_jeux_id = jeux.id
+                INNER JOIN users ON users.id = avis_jeux.avis_user_id
                 INNER JOIN avis_join ON avis_join.avis_id = avis_jeux.id
                 WHERE jeux.id = :id";
                 $result = $dbh->prepare($sql);
@@ -31,17 +26,31 @@
                 $result4->execute(['id' => $_GET['id']]);
                 $sql2 = "SELECT *
                 FROM categorie
-                LEFT JOIN cat_join  
+                INNER JOIN cat_join
                 ON cat_join.categorie_id = categorie.id
-                LEFT JOIN jeux
+                INNER JOIN jeux
                 ON cat_join.jeux_id = jeux.id
                 WHERE jeux.id = :jeux_id";
                 $result2 = $dbh->prepare($sql2);
                 $result2->execute(['jeux_id' => $_GET['id']]);
-                $sql3 = "SELECT text, avis_user_id FROM avis_jeux WHERE avis_user_id=? AND avis_jeux.avis_jeux_id =?";
-                $result3 = $dbh->prepare($sql3);
-                $result3->execute([$_SESSION['auth']->id, $_GET['id']]);
-                $commentUser = $result3->fetchObject();
+                $sqlMoyenne = "SELECT jeux.id AS id, GROUP_CONCAT(avis_join.avis_eval) AS `avgEval`
+                FROM jeux
+                INNER JOIN avis_join
+                ON avis_join.jeux_id = jeux.id
+                WHERE jeux.id = :id
+                GROUP BY jeux.id";
+                $prepareMoyenne = $dbh->prepare($sqlMoyenne);
+                $prepareMoyenne->execute(['id' => $_GET['id']]);
+                $evalMoyenne = $prepareMoyenne->fetchObject();
+
+                if(isset($_SESSION['auth'])){
+                    $sql3 = "SELECT text, avis_user_id FROM avis_jeux WHERE avis_user_id=? AND avis_jeux.avis_jeux_id =?";
+                    $result3 = $dbh->prepare($sql3);
+                    $result3->execute([$_SESSION['auth']->id, $_GET['id']]);
+                    $commentUser = $result3->fetchObject();
+                    $commentsPosted=true;
+                }
+
                 ?>
 
                 <div class="ui vertical segment">
@@ -60,10 +69,12 @@
                                 <h5 class="ui header" style="color: rgba(179, 25, 38, 1)">Hors stock</h5>
                             <?php endif; ?>
                             <h5 class="ui header">Date de sortie : <?= $jeux->date ?></h5>
-                            <?php for ($i = 1; $i <= 5; $i++):
-                                if ($i <= 3): ?>
+                            <?php $avgEval = explode(',',$evalMoyenne->avgEval);
+                            $moyenne = array_sum($avgEval)/count($avgEval);?>
+                            <?php for($i = 1; $i<= 5; $i++):?>
+                                <?php if($i <= $moyenne):?>
                                     <i class="star icon"></i>
-                                <?php else: ?>
+                                <?php else:?>
                                     <i class="empty star icon"></i>
                                 <?php endif; ?>
                             <?php endfor; ?>
@@ -92,6 +103,7 @@
                         <div class="ui four cards">
 
                             <?php while($jeux=$result4->fetchObject()):?>
+                            <?php $_SESSION['allUsers'][] = $jeux->username ?>
                                 <div class="card">
                                     <div class="content">
                                         <div class="header"><?=$jeux->username?></div>
@@ -99,18 +111,18 @@
                                     </div>
                                     <div class="extra content">
                                         Rating:
-                                        <?php for ($i = 1; $i <= 5; $i++):
-                                            if ($i <= $jeux->avis_eval): ?>
+                                        <?php for($i = 1; $i<= 5; $i++):?>
+                                            <?php if($i <= $jeux->avis_eval):?>
                                                 <i class="star icon"></i>
                                             <?php else:?>
                                                 <i class="empty star icon"></i>
-                                            <?php endif;?>
-                                        <?php endfor;?>
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
                                     </div>
-
                                 </div>
                             <?php endwhile; ?>
                         </div>
+                        <?php var_dump($_SESSION['allUsers']) ?>
 
                         <?php if(!empty($_SESSION['auth'])):?>
                             <?php if(isset($_SESSION['allUsers']))
@@ -122,6 +134,7 @@
                             else {
                                 $commentsPosted=true;
                             }?>
+                            <?php var_dump($commentsPosted) ?>
                         <form id="form-avis" action="actions/addAvis.php" method="post">
                             <div class="ui two stackable grid">
                                 <div class="three wide column">
@@ -142,9 +155,10 @@
                             <h4>Commentaire</h4>
                             <label for="edit">
                                 <textarea id="edit" name="edit"><?php
-                                    if(isset($commentUser->text)){
-                                    echo $commentsPosted ? $commentUser->text : '';
-                                    }?></textarea>
+                                    if($commentsPosted==false){
+                                        echo $commentUser->text;
+                                    }
+                                    ?></textarea>
                             </label>
                             <?php if(!$commentsPosted): ?>
                             <input type="hidden" name="avis_exist" value="update">
@@ -155,11 +169,6 @@
                         <?php endif; ?>
                         <?php if(empty($_SESSION['auth'])):?>
                             <h4 class="ui header">Veuillez vous connectez pour laisser votre avis</h4>
-                        <div class="ui grid inscription">
-                            <div class="four wide column">
-                                <a href="?page=inscription" class="ui fluid large teal submit button">Inscription</a>
-                            </div>
-                        </div>
                         <?php endif ?>
                     </div>
                 </div>
@@ -168,27 +177,17 @@
             }
 
             //Affichage de tout les jeux -----
+            $rightSql = "SELECT jeux.id, jeux.imgSmall, jeux.title, jeux.quantity, jeux.quantity, jeux.prix, jeux.description, GROUP_CONCAT(avis_join.avis_eval) AS `avgEval`
+                        FROM jeux
+                        INNER JOIN avis_join ON avis_join.jeux_id = jeux.id
+                        ";
+            $tri_autorises = array('quantity','title', 'prix', 'date');
+            $order_by = in_array($_GET['order'],$tri_autorises) ? $_GET['order'] : 'datePub';
+            $order_dir = isset($_GET['inverse']) ? 'DESC' : 'ASC';
+            $sql = $rightSql.'GROUP BY jeux.id ORDER BY '.$order_by.' '.$order_dir;
             if(isset($_GET['id'])){
                 $id = $_GET['id'];
-                $sql = "SELECT *
-                FROM jeux
-                WHERE id NOT IN ('$id')
-                ORDER BY datePub DESC";
-
-            }
-            elseif(isset($_GET['tri'])){
-                switch($_GET['tri']){
-                    case 'prix':
-                        $sql = "SELECT * FROM jeux ORDER BY prix ASC";
-                        break;
-                    case 'date':
-                        $sql = "SELECT * FROM jeux ORDER BY datepub DESC";
-                        break;
-                }
-            }
-            else{
-                $sql = "SELECT jeux.id AS id, jeux.imgSmall, jeux.title, jeux.quantity, jeux.prix, jeux.description FROM jeux 
-            ORDER BY datePub DESC";
+                $sql = $rightSql."WHERE jeux.id NOT IN ('$id') GROUP BY jeux.id ORDER BY datePub DESC";
             }
             $affichagecatalogue = $dbh->prepare($sql);
             $affichagecatalogue->execute();
@@ -196,15 +195,10 @@
             ?>
             <div class="ui text menu">
                 <div class="header item">Trier par</div>
-                <a class="item active" href="?page=catalogue&tri=prix">
-                    Prix
-                </a>
-                <a class="item" href="?page=catalogue&tri=date">
-                    Date de sortie
-                </a>
-                <a class="item" href="?page=catalogue&tri=eval">
-                    Evaluation
-                </a>
+                <?php echo sort_link('catalogue&order=','Nom', 'title') ?>
+                <?php echo sort_link('catalogue&order=','Prix', 'prix') ?>
+                <?php echo sort_link('catalogue&order=','Date', 'datePub') ?>
+                <?php echo sort_link('catalogue&order=','Disponibilitée', 'quantity') ?>
             </div>
             <?php while($jeux=$affichagecatalogue->fetchObject()):?>
 

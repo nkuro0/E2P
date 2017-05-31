@@ -14,12 +14,14 @@ if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])){
         $_SESSION['lvluser'] =
         $_SESSION['flash']['success'] = 'Vous êtes maintenant bien connecté';
 
-        header('Location: ../index.php?page='.$page);
+        header('Location: ../index.php?page=accueil&order');
     }
+}
+if($_GET['page']=='catalogue'){
 }
 
 if (empty($_SESSION['auth'])) {
-    header('Location: ../index.php?page='.$page);
+        header('Location: ../index.php?page=accueil&order');
 }
 
 

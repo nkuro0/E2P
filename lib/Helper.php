@@ -18,19 +18,20 @@ class Helper
 
     public function cutString2($txt, $id)
     {
+        $_SESSION['allUsers']=[];
         if (strlen($txt) > 250){
             $txt = substr($txt, 0, 250);
             $space = strrpos($txt, ' ');
             $txt = substr($txt, 0, $space);
             $txt .='...';
-            return $txt.'<br><a href="?page=catalogue&amp;id='.$id.'"><button class="positive ui button">Suite et infos du jeu</button></a>';
+            return $txt.'<br><a href="?page=catalogue&amp;id='.$id.'&order=datePub"><button class="positive ui button">Suite et infos du jeu</button></a>';
         }
         else {
-            return $txt;
+            return $txt.'<br><a href="?page=catalogue&amp;id='.$id.'&order=datePub"><button class="positive ui button">information du jeu</button></a>';
+
 
         }
     }
-
     public function justcut($txt){
         if (strlen($txt) > 100) {
             $txt = substr($txt, 0, 100);
@@ -72,4 +73,5 @@ class Helper
             exit;
         }
     }
+
 }
