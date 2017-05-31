@@ -13,10 +13,18 @@ $text = $_POST['edit'];
 $eval = $_POST['eval'];
 $statement = $_POST['avis_exist'];
 
-var_dump($statement);
-die;
+
 if(isset($statement)){
-    $sql = "UPDATE "
+    $sql = "UPDATE avis_jeux SET text= :text";
+    $result = $dbh->prepare($sql);
+    $result->execute([
+        'text' => $text
+    ]);
+    $sql = "UPDATE avis_join SET avis_eval= :eval";
+    $result = $dbh->prepare($sql);
+    $result->execute([
+        'eval' => $eval
+    ]);
 }
 else{
     $sql = "INSERT INTO avis_jeux (avis_jeux_id, avis_user_id, text) VALUES ('$jeuxId', '$userId', '$text')";
@@ -29,7 +37,7 @@ else{
 }
 
 
-//header ('location:' .$_SERVER['HTTP_REFERER']);
+header ('location:' .$_SERVER['HTTP_REFERER']);
 
 
 
