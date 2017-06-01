@@ -75,7 +75,7 @@ if(isset($_POST)) {
         unlink($folder.$row->img);
 
         $sql = "UPDATE news
-                SET img= :img
+                SET img = :img,
                 WHERE id = :id";
         $result = $dbh->prepare($sql);
 

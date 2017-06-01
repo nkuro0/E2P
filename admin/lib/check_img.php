@@ -47,7 +47,6 @@ class Check_img
             $fp = @fopen($this->folder.$fichier, 'r');
             //Vérification de lecture du fichier
             if (!$fp) {
-                unlink($this->folder.$fichier);
                 return 'Error';
             }
         }

@@ -22,6 +22,9 @@ elseif($_GET['page'] == 'logout') {
     require 'includes/logout.php';
 }
 
+elseif($_GET['page'] == 'recherche') {
+    require 'includes/recherche.php';
+}
 
 // Page d'accueil -----------------
 if($_GET['page'] == 'accueil') {

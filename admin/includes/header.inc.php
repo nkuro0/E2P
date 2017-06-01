@@ -13,7 +13,8 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
@@ -22,7 +23,34 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
     <script src="js/ckeditor/ckeditor.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        $('#recherche').autocomplete({
+            source : function(requete, reponse){ // les deux arguments représentent les données nécessaires au plugin
+                $.ajax({
+                    url : 'http://ws.geonames.org/searchJSON', // on appelle le script JSON
+                    dataType : 'json', // on spécifie bien que le type de données est en JSON
+                    data : {
+                        name_startsWith : $('#recherche').val(), // on donne la chaîne de caractère tapée dans le champ de recherche
+                        maxRows : 15
+                    },
+
+                    success : function(donnee){
+                        reponse($.map(donnee.geonames, function(objet){
+                            return objet.name + ', ' + objet.countryName; // on retourne cette forme de suggestion
+                        }));
+                    }
+                });
+            }
+        });
+    </script>
 
 </head>
 

@@ -108,6 +108,9 @@ iframe{
     min-height: 300px;
 }
 
+#recherche{
+    color: white;
+}
 .description p{
     overflow-wrap: break-word;
     max-width: 100%;

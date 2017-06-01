@@ -25,7 +25,6 @@ $page = $result->fetchObject();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E2P</title>
-
     <!-- Semantic UI core CSS -->
     <link href="css/icon.min.css" rel="stylesheet">
     <link href="css/semantic.min.css" rel="stylesheet">
@@ -77,10 +76,12 @@ $page = $result->fetchObject();
                      <?php endwhile;?>
                     <div class="right menu">
                      <a class="item">
-                         <a class="ui transparent icon input">
-                             <input class="prompt" type="text" placeholder="Recherche">
-                             <i class="search link icon inverted"></i>
-                         </a>
+                         <form action="includes/recherche.php">
+                            <a class="ui transparent icon input">
+                                <input type="search" id="recherche" class="prompt" type="text" placeholder="Recherche">
+                                <i class="search link icon inverted"></i>
+                            </a>
+                         </form>
                      </a>
                      <div class="panier ui icon input">
                          <a class="_panier" href="?page=panier"><i class="link inverted shop icon"><b>&nbsp(<?=array_sum($_SESSION['panier'])?>)</b></i></a>

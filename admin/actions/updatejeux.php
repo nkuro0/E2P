@@ -9,7 +9,12 @@ spl_autoload_register(function($class) {
 $maxSize = '8196394';
 $folder = '../../img/imgJeux/';
 $dbh = DB::getInstance();
-$date = time();
+$imgExt = str_replace('image/', '.', $_FILES['image']['type']);
+if ($imgExt == '.jpeg'){
+    $imgExt = '.jpg';
+}
+$basename = basename($_FILES['image']['name'], $imgExt);
+
 $id = $_POST['id'];
 $filename = "SELECT imgSmall FROM jeux WHERE id = '$id'";
 $res =  $dbh->prepare($filename);
@@ -47,12 +52,15 @@ if(isset($_POST)) {
             ]
         );
 
-    $category = $_POST['categorie'];
-    foreach($category as $val){
-        $sql3 = "INSERT INTO cat_join (jeux_id, categorie_id) VALUES ('$id','$val')";
-        $result3 = $dbh->prepare($sql3);
-        $result3->execute();
+    if(isset($_POST['categorie'])){
+        $category = $_POST['categorie'];
+        foreach($category as $val){
+            $sql3 = "INSERT INTO cat_join (jeux_id, categorie_id) VALUES ('$id','$val')";
+            $result3 = $dbh->prepare($sql3);
+            $result3->execute();
+        }
     }
+
 
     if (isset($_FILES['image']) && ($_FILES['image']['error'] == 0)) {
         list($width, $height, $type, $attr) = getimagesize($_FILES['image']['tmp_name']);
@@ -80,7 +88,7 @@ if(isset($_POST)) {
             $extension = '.png';
         }
         //Définition nom de fichier
-        $fichier = $date.$extension;
+        $fichier = $basename.$extension;
 
         //Verification upload
         if (move_uploaded_file($_FILES['image']['tmp_name'], $folder . $fichier)) {
@@ -92,12 +100,11 @@ if(isset($_POST)) {
             }
         }
         //suppression ancienne image
-        unlink($folder.$row->imgSmall);
+        unlink($folder.$row->img);
 
         $sql = "UPDATE jeux
-                SET imgSmall= :img,
+                SET imgSmall= :img
                 WHERE id = :id";
-
         $result = $dbh->prepare($sql);
         $result->execute(
             [

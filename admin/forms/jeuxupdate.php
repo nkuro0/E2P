@@ -16,9 +16,9 @@ $realcat = array();
 while($checkedcat=$result2->fetchObject()){
     $realcat[] = $checkedcat->categorie_id;
 }
-var_dump($realcat);
+
 ?>
-<h3>modifier un jeu</h3>
+<h3>Modifier un jeu</h3>
 <form action="actions/updatejeux.php" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="title">Titre du jeu</label>
@@ -27,16 +27,6 @@ var_dump($realcat);
     <div class="form-group">
         <label for="prix">Prix du jeu</label>
         <input type="number" step="0.01" value="<?=$row->prix?>"" name="prix" id="prix" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="eval">Evaluation du jeu</label>
-        <select name="eval" class="form-control" id="evalSelect">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
     </div>
     <div class="form-check">
         <label for="categorie" class="form-check-label">
@@ -52,6 +42,7 @@ var_dump($realcat);
     <div class="form-group">
         <label for="image">Image du jeu</label>
         <input type="file" name="image" id="image" class="form-control">
+        <p><?=$row->imgSmall?></p>
         <img src="../img/imgJeux/<?=$row->imgSmall?>" style="width: 200px;">
     </div>
     <div class="form-group">
