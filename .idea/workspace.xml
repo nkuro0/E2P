@@ -80,25 +80,30 @@
     <favorites_list name="E2P" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="header.inc.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/header.inc.php">
+    <leaf>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+            <state relative-caret-position="272">
+              <caret line="40" column="33" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
               <folding>
-                <marker date="1495995978323" expanded="true" signature="75:120" ph="SELECT link,... pages" />
-                <marker date="1495995978323" expanded="true" signature="245:347" ph="SELECT title... pages" />
-                <marker date="1495995978323" expanded="true" signature="2177:2598" ph="..." />
-                <marker date="1495995978323" expanded="true" signature="2218:2598" ph="..." />
-                <marker date="1495995978323" expanded="true" signature="2260:2598" ph="..." />
-                <marker date="1495995978323" expanded="true" signature="2322:2598" ph="..." />
-                <marker date="1495995978323" expanded="true" signature="2365:2447" ph="..." />
-                <marker date="1495995978323" expanded="true" signature="2855:3359" ph="..." />
-                <marker date="1495995978323" expanded="true" signature="2893:3171" ph="..." />
-                <marker date="1495995978323" expanded="true" signature="2956:3145" ph="..." />
-                <marker date="1495995978323" expanded="true" signature="3227:3359" ph="..." />
+                <marker date="1496236410119" expanded="true" signature="793:953" ph="SELECT id, t... jeux" />
+                <marker date="1496236410119" expanded="true" signature="5658:5813" ph="SELECT id, p... " />
+                <marker date="1496236410119" expanded="true" signature="7871:8031" ph="SELECT id, t... news" />
+                <marker date="1496236410119" expanded="true" signature="9230:9355" ph="SELECT id, t... news" />
+                <marker date="1496236410119" expanded="true" signature="9764:9872" ph="SELECT id, t... news" />
+                <marker date="1496236410119" expanded="true" signature="11708:11756" ph="SELECT conte... pages" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tri.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/actions/tri.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -106,129 +111,31 @@
       <file leaf-file-name="catalogue.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/catalogue.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="20" column="268" selection-start-line="20" selection-start-column="268" selection-end-line="20" selection-end-column="268" />
+            <state relative-caret-position="361">
+              <caret line="215" column="69" selection-start-line="215" selection-start-column="69" selection-end-line="215" selection-end-column="69" />
               <folding>
-                <marker date="1496064101927" expanded="true" signature="248:271" ph="SELECT * FRO... categorie" />
-                <marker date="1496064101927" expanded="true" signature="665:835" ph="SELECT jeux.... jeux" />
-                <marker date="1496064101927" expanded="true" signature="665:1190" ph="SELECT jeux.... jeux" />
-                <marker date="1496064101927" expanded="true" signature="665:1726" ph="SELECT jeux.... " />
-                <marker date="1496064101927" expanded="true" signature="1476:1726" ph="SELECT * FRO... categorie" />
-                <marker date="1496064101927" expanded="true" signature="1484:1726" ph="SELECT * FRO... categorie" />
-                <marker date="1496064101927" expanded="true" signature="1866:1957" ph="SELECT text,... avis_jeux" />
-                <marker date="1496064101927" expanded="true" signature="5468:6037" ph="..." />
-                <marker date="1496064101927" expanded="true" signature="9326:9438" ph="SELECT * FRO... jeux" />
-                <marker date="1496064101927" expanded="true" signature="9600:9636" ph="SELECT * FRO... jeux" />
-                <marker date="1496064101927" expanded="true" signature="9735:9775" ph="SELECT * FRO... jeux" />
-                <marker date="1496064101927" expanded="true" signature="9883:10019" ph="SELECT * FRO... jeux" />
-                <marker date="1496064101927" expanded="true" signature="11310:11339" ph="..." />
-                <marker date="1496064101927" expanded="true" signature="11477:11504" ph="..." />
+                <marker date="1496235876065" expanded="true" signature="513:1036" ph="SELECT jeux.... jeux" />
+                <marker date="1496235876065" expanded="true" signature="1322:1572" ph="SELECT * FRO... categorie" />
+                <marker date="1496235876065" expanded="true" signature="1718:1965" ph="SELECT jeux.... jeux" />
+                <marker date="1496235876065" expanded="true" signature="2234:2325" ph="SELECT text,... avis_jeux" />
+                <marker date="1496235876065" expanded="true" signature="9663:9921" ph="SELECT jeux.... jeux" />
+                <marker date="1496235876065" expanded="true" signature="11690:11719" ph="..." />
+                <marker date="1496235876065" expanded="true" signature="11857:11884" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="listjeux.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/includes/listjeux.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-              <folding>
-                <marker date="1496064377648" expanded="true" signature="144:305" ph="SELECT id, t... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addjeux.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/actions/addjeux.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
-              <folding>
-                <marker date="1496070548003" expanded="true" signature="1113:1280" ph="INSERT INTO jeux... " />
-                <marker date="1496070548003" expanded="true" signature="1475:1554" ph="INSERT INTO cat_join... " />
-                <marker date="1496070548003" expanded="true" signature="1677:1766" ph="INSERT INTO avis_jeux... " />
-                <marker date="1496070548003" expanded="true" signature="1920:1980" ph="INSERT INTO avis_join... " />
-                <marker date="1496070548003" expanded="true" signature="1920:2054" ph="INSERT INTO avis_join... " />
-                <marker date="1496070548003" expanded="true" signature="1920:2186" ph="INSERT INTO avis_join... " />
-                <marker date="1496070548003" expanded="true" signature="2131:2186" ph="INSERT INTO header" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deljeux.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/actions/deljeux.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
-              <folding>
-                <marker date="1487596967413" expanded="true" signature="37:85" ph="DELETE FROM " />
-                <marker date="1487596967413" expanded="true" signature="97:136" ph="DELETE FROM " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jeuxinsert.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/forms/jeuxinsert.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
-              <caret line="39" column="51" selection-start-line="39" selection-start-column="51" selection-end-line="39" selection-end-column="51" />
-              <folding>
-                <marker date="1496065663069" expanded="true" signature="12:35" ph="SELECT * FRO... categorie" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="formlogin.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/formlogin.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addpanier.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/actions/addpanier.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="49" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="49" />
-              <folding>
-                <marker date="1487604668266" expanded="true" signature="43:98" ph="SELECT id FR... jeux" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addAvis.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="addAvis.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/actions/addAvis.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+            <state relative-caret-position="476">
+              <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
               <folding>
-                <marker date="1496010610534" expanded="true" signature="270:375" ph="INSERT INTO avis_jeux... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-              <folding>
-                <marker date="1495993415728" expanded="true" signature="789:969" ph="SELECT id, t... jeux" />
-                <marker date="1495993415728" expanded="true" signature="5025:5180" ph="SELECT id, p... " />
-                <marker date="1495993415728" expanded="true" signature="7238:7398" ph="SELECT id, t... news" />
-                <marker date="1495993415728" expanded="true" signature="8597:8722" ph="SELECT id, t... news" />
-                <marker date="1495993415728" expanded="true" signature="9131:9239" ph="SELECT id, t... news" />
-                <marker date="1495993415728" expanded="true" signature="11075:11123" ph="SELECT conte... pages" />
+                <marker date="1496244732864" expanded="true" signature="332:418" ph="UPDATE avis_... " />
+                <marker date="1496244732864" expanded="true" signature="578:659" ph="UPDATE avis_... " />
+                <marker date="1496244732864" expanded="true" signature="827:922" ph="INSERT INTO avis_jeux... " />
+                <marker date="1496244732864" expanded="true" signature="1037:1152" ph="INSERT INTO avis_join... " />
               </folding>
             </state>
           </provider>
@@ -270,13 +177,13 @@
         <option value="$PROJECT_DIR$/css/app.css" />
         <option value="$PROJECT_DIR$/includes/formlogin.php" />
         <option value="$PROJECT_DIR$/actions/login.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/includes/header.inc.php" />
-        <option value="$PROJECT_DIR$/actions/addAvis.php" />
-        <option value="$PROJECT_DIR$/includes/catalogue.php" />
         <option value="$PROJECT_DIR$/admin/includes/listjeux.php" />
         <option value="$PROJECT_DIR$/admin/forms/jeuxinsert.php" />
         <option value="$PROJECT_DIR$/admin/actions/addjeux.php" />
+        <option value="$PROJECT_DIR$/includes/catalogue.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/actions/addAvis.php" />
       </list>
     </option>
   </component>
@@ -318,7 +225,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -436,6 +342,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -533,10 +440,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142484000" />
+    <option name="totallyTimeSpent" value="145655000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -574,7 +481,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/index.php</url>
-          <line>209</line>
+          <line>216</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
@@ -582,13 +489,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin/forms/pageupdate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/forms/newsupdate.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -665,9 +565,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding>
-            <marker date="1481895504000" expanded="true" signature="386:469" ph="INSERT INTO pages... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -690,13 +588,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding>
-            <marker date="1491227747963" expanded="true" signature="296:338" ph="SELECT imgSm... jeux" />
-            <marker date="1491227747963" expanded="true" signature="458:764" ph="UPDATE jeux " />
-            <marker date="1491227747963" expanded="true" signature="1191:1231" ph="DELETE FROM " />
-            <marker date="1491227747963" expanded="true" signature="1452:1518" ph="INSERT INTO cat_join... " />
-            <marker date="1491227747963" expanded="true" signature="3152:3230" ph="UPDATE jeux " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -711,9 +603,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-          <folding>
-            <marker date="1487357108125" expanded="true" signature="2113:2241" ph="INSERT INTO news... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -758,25 +648,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/evaluation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/evaluation.php" />
     <entry file="file://$PROJECT_DIR$/actions/delpanier.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding>
-            <marker date="1487000981780" expanded="true" signature="62:125" ph="SELECT id FR... jeux" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -799,7 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,7 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -823,7 +701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -831,7 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="467">
           <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -847,10 +723,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <marker date="1495978009698" expanded="true" signature="269:367" ph="SELECT * FRO... jeux" />
-            <marker date="1495978009698" expanded="true" signature="3895:3901" ph=" " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -866,7 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="563">
           <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -874,9 +746,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-          <folding>
-            <marker date="1495992259998" expanded="true" signature="43:95" ph="SELECT title... slides" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -884,19 +754,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-          <folding>
-            <marker date="1495995978323" expanded="true" signature="75:120" ph="SELECT link,... pages" />
-            <marker date="1495995978323" expanded="true" signature="245:347" ph="SELECT title... pages" />
-            <marker date="1495995978323" expanded="true" signature="2177:2598" ph="..." />
-            <marker date="1495995978323" expanded="true" signature="2218:2598" ph="..." />
-            <marker date="1495995978323" expanded="true" signature="2260:2598" ph="..." />
-            <marker date="1495995978323" expanded="true" signature="2322:2598" ph="..." />
-            <marker date="1495995978323" expanded="true" signature="2365:2447" ph="..." />
-            <marker date="1495995978323" expanded="true" signature="2855:3359" ph="..." />
-            <marker date="1495995978323" expanded="true" signature="2893:3171" ph="..." />
-            <marker date="1495995978323" expanded="true" signature="2956:3145" ph="..." />
-            <marker date="1495995978323" expanded="true" signature="3227:3359" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -912,19 +770,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="49" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="49" />
-          <folding>
-            <marker date="1487604668266" expanded="true" signature="43:98" ph="SELECT id FR... jeux" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/actions/addAvis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-          <folding>
-            <marker date="1496010610534" expanded="true" signature="270:375" ph="INSERT INTO avis_jeux... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -932,47 +778,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-          <folding>
-            <marker date="1495993383582" expanded="true" signature="273:319" ph="SELECT * FRO... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-          <folding>
-            <marker date="1495993415728" expanded="true" signature="789:969" ph="SELECT id, t... jeux" />
-            <marker date="1495993415728" expanded="true" signature="5025:5180" ph="SELECT id, p... " />
-            <marker date="1495993415728" expanded="true" signature="7238:7398" ph="SELECT id, t... news" />
-            <marker date="1495993415728" expanded="true" signature="8597:8722" ph="SELECT id, t... news" />
-            <marker date="1495993415728" expanded="true" signature="9131:9239" ph="SELECT id, t... news" />
-            <marker date="1495993415728" expanded="true" signature="11075:11123" ph="SELECT conte... pages" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/catalogue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="268" selection-start-line="20" selection-start-column="268" selection-end-line="20" selection-end-column="268" />
-          <folding>
-            <marker date="1496064101927" expanded="true" signature="248:271" ph="SELECT * FRO... categorie" />
-            <marker date="1496064101927" expanded="true" signature="665:835" ph="SELECT jeux.... jeux" />
-            <marker date="1496064101927" expanded="true" signature="665:1190" ph="SELECT jeux.... jeux" />
-            <marker date="1496064101927" expanded="true" signature="665:1726" ph="SELECT jeux.... " />
-            <marker date="1496064101927" expanded="true" signature="1476:1726" ph="SELECT * FRO... categorie" />
-            <marker date="1496064101927" expanded="true" signature="1484:1726" ph="SELECT * FRO... categorie" />
-            <marker date="1496064101927" expanded="true" signature="1866:1957" ph="SELECT text,... avis_jeux" />
-            <marker date="1496064101927" expanded="true" signature="5468:6037" ph="..." />
-            <marker date="1496064101927" expanded="true" signature="9326:9438" ph="SELECT * FRO... jeux" />
-            <marker date="1496064101927" expanded="true" signature="9600:9636" ph="SELECT * FRO... jeux" />
-            <marker date="1496064101927" expanded="true" signature="9735:9775" ph="SELECT * FRO... jeux" />
-            <marker date="1496064101927" expanded="true" signature="9883:10019" ph="SELECT * FRO... jeux" />
-            <marker date="1496064101927" expanded="true" signature="11310:11339" ph="..." />
-            <marker date="1496064101927" expanded="true" signature="11477:11504" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -988,9 +794,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-          <folding>
-            <marker date="1496064377648" expanded="true" signature="144:305" ph="SELECT id, t... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -998,9 +802,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="611">
           <caret line="39" column="51" selection-start-line="39" selection-start-column="51" selection-end-line="39" selection-end-column="51" />
-          <folding>
-            <marker date="1496065663069" expanded="true" signature="12:35" ph="SELECT * FRO... categorie" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1008,15 +810,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="509">
           <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
-          <folding>
-            <marker date="1496070548003" expanded="true" signature="1113:1280" ph="INSERT INTO jeux... " />
-            <marker date="1496070548003" expanded="true" signature="1475:1554" ph="INSERT INTO cat_join... " />
-            <marker date="1496070548003" expanded="true" signature="1677:1766" ph="INSERT INTO avis_jeux... " />
-            <marker date="1496070548003" expanded="true" signature="1920:1980" ph="INSERT INTO avis_join... " />
-            <marker date="1496070548003" expanded="true" signature="1920:2054" ph="INSERT INTO avis_join... " />
-            <marker date="1496070548003" expanded="true" signature="1920:2186" ph="INSERT INTO avis_join... " />
-            <marker date="1496070548003" expanded="true" signature="2131:2186" ph="INSERT INTO header" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1024,9 +818,58 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/actions/tri.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="40" column="33" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
           <folding>
-            <marker date="1487596967413" expanded="true" signature="37:85" ph="DELETE FROM " />
-            <marker date="1487596967413" expanded="true" signature="97:136" ph="DELETE FROM " />
+            <marker date="1496236410119" expanded="true" signature="793:953" ph="SELECT id, t... jeux" />
+            <marker date="1496236410119" expanded="true" signature="5658:5813" ph="SELECT id, p... " />
+            <marker date="1496236410119" expanded="true" signature="7871:8031" ph="SELECT id, t... news" />
+            <marker date="1496236410119" expanded="true" signature="9230:9355" ph="SELECT id, t... news" />
+            <marker date="1496236410119" expanded="true" signature="9764:9872" ph="SELECT id, t... news" />
+            <marker date="1496236410119" expanded="true" signature="11708:11756" ph="SELECT conte... pages" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/catalogue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="215" column="69" selection-start-line="215" selection-start-column="69" selection-end-line="215" selection-end-column="69" />
+          <folding>
+            <marker date="1496235876065" expanded="true" signature="513:1036" ph="SELECT jeux.... jeux" />
+            <marker date="1496235876065" expanded="true" signature="1322:1572" ph="SELECT * FRO... categorie" />
+            <marker date="1496235876065" expanded="true" signature="1718:1965" ph="SELECT jeux.... jeux" />
+            <marker date="1496235876065" expanded="true" signature="2234:2325" ph="SELECT text,... avis_jeux" />
+            <marker date="1496235876065" expanded="true" signature="9663:9921" ph="SELECT jeux.... jeux" />
+            <marker date="1496235876065" expanded="true" signature="11690:11719" ph="..." />
+            <marker date="1496235876065" expanded="true" signature="11857:11884" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/actions/addAvis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+          <folding>
+            <marker date="1496244732864" expanded="true" signature="332:418" ph="UPDATE avis_... " />
+            <marker date="1496244732864" expanded="true" signature="578:659" ph="UPDATE avis_... " />
+            <marker date="1496244732864" expanded="true" signature="827:922" ph="INSERT INTO avis_jeux... " />
+            <marker date="1496244732864" expanded="true" signature="1037:1152" ph="INSERT INTO avis_join... " />
           </folding>
         </state>
       </provider>

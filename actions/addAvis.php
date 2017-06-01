@@ -15,15 +15,19 @@ $statement = $_POST['avis_exist'];
 
 
 if(isset($statement)){
-    $sql = "UPDATE avis_jeux SET text= :text";
+    $sql = "UPDATE avis_jeux SET text = :text WHERE avis_user_id = :id AND avis_jeux_id = :jeux_id";
     $result = $dbh->prepare($sql);
     $result->execute([
-        'text' => $text
+        'text' => $text,
+        'id' => $userId,
+        'jeux_id' => $jeuxId
     ]);
-    $sql = "UPDATE avis_join SET avis_eval= :eval";
+    $sql = "UPDATE avis_join SET avis_eval = :eval WHERE user_id = :id AND jeux_id = :jeux_id";
     $result = $dbh->prepare($sql);
     $result->execute([
-        'eval' => $eval
+        'eval' => $eval,
+        'id' => $userId,
+        'jeux_id' => $jeuxId
     ]);
 }
 else{

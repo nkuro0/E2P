@@ -51,6 +51,13 @@ require "includes/formlogin.php";
     ?>
             <!-- Affichage Maintenant disponible -->
 <div class="ui ten wide column "><h3 class="ui header center aligned segment">Maintenant disponible</h3>
+    <div class="ui text menu">
+        <div class="header item">Trier par</div>
+        <?php echo sort_link('accueil&order=','Nom', 'title') ?>
+        <?php echo sort_link('accueil&order=','Prix', 'prix') ?>
+        <?php echo sort_link('accueil&order=','Date', 'date') ?>
+        <?php echo sort_link('accueil&order=','Disponibilitée', 'quantity') ?>
+    </div>
                 <ul>
 
                     <?php $i=1; ?>

@@ -122,8 +122,6 @@
                                 </div>
                             <?php endwhile; ?>
                         </div>
-                        <?php var_dump($_SESSION['allUsers']) ?>
-
                         <?php if(!empty($_SESSION['auth'])):?>
                             <?php if(isset($_SESSION['allUsers']))
                             {
@@ -134,7 +132,6 @@
                             else {
                                 $commentsPosted=true;
                             }?>
-                            <?php var_dump($commentsPosted) ?>
                         <form id="form-avis" action="actions/addAvis.php" method="post">
                             <div class="ui two stackable grid">
                                 <div class="three wide column">
