@@ -26,7 +26,7 @@ if(isset($_POST)) {
         $sql = "UPDATE jeux
                 SET title= :title,
                     prix= :prix,
-                    datePub= CURDATE(),
+                    datePub= :date,
                     quantity= :quantity,
                     view= :view,
                     description= :description
@@ -37,6 +37,7 @@ if(isset($_POST)) {
             [
                 'title' => $_POST['title'],
                 'prix' => $_POST['prix'],
+                'date' => $_POST['date'],
                 'quantity' => $_POST['quantity'],
                 'view' => $_POST['view'],
                 'description' => $_POST['description'],

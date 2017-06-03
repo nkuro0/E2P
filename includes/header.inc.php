@@ -6,6 +6,8 @@
 $sql = "SELECT link, slug FROM pages WHERE `view` = 1";
 $resultMenu = $dbh->prepare($sql);
 $resultMenu->execute();
+$resultMenu2 = $dbh->prepare($sql);
+$resultMenu2->execute();
 
 //Requête
 $_GET['page'] = $_GET['page'] ?? 'accueil';
@@ -35,23 +37,13 @@ $page = $result->fetchObject();
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
     <!-- JS slider & modal & jquery -->
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/search.js"></script>
     <script src="js/glide.min.js"></script>
     <script src="js/semantic.min.js"></script>
     <!-- CK editor -->
     <script src="js/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript">
-        var _smartsupp = _smartsupp || {};
-        _smartsupp.key = '58798888bf923c06c182abd15c3cf587becd0ce6';
-        window.smartsupp||(function(d) {
-            var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-            s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-            c.type='text/javascript';c.charset='utf-8';c.async=true;
-            c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-        })(document);
-        smartsupp('email', '<?=$_SESSION['auth']->mail?>');
-        smartsupp('name', '<?=$_SESSION['auth']->name?> <?=$_SESSION['auth']->firstname?>');
-    </script>
+
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Nova+Square" rel="stylesheet">
 
@@ -59,8 +51,33 @@ $page = $result->fetchObject();
 <body>
 <?php require_once 'lib/functions.php' ?>
 
-<!----navbar---->
+
     <main>
+        <!----navbar mobile---->
+        <div class="ui sidebar inverted vertical menu">
+            <a class="item" href="?page=panier"><i class="link inverted shop icon"><b>&nbsp(<?=array_sum($_SESSION['panier'])?>)</b></i>Panier</a>
+            <?php while($row2 =$resultMenu2->fetchObject()):?>
+                <a class="item <?php
+                if($_GET['page'] == $row2->slug) {
+                    echo 'active';
+                }
+                ?>" href="?page=<?=$row2->slug?>"><?=$row2->link?></a>
+
+            <?php endwhile;?>
+            <div class="ui transparent icon input">
+                <a class="item">
+                    <input type="text" class="recherche" name="recherche" placeholder="Recherche">
+                    <i class="search link icon inverted"></i>
+                </a>
+            </div>
+            <div class="results" id="results">
+
+            </div>
+        </div>
+        <!----navbar mobile---->
+        <!----navbar---->
+        <div class="pusher">
+        <div class="ui secondary labeled icon toggle button"><i class="sidebar icon"></i>menu</div>
        <nav class="ui inverted segment">
            <div class="ui nav container">
             <div class="ui inverted secondary pointing menu">
@@ -73,23 +90,29 @@ $page = $result->fetchObject();
                              echo 'active';
                          }
                          ?>" href="?page=<?=$row->slug?>"><?=$row->link?></a>
+
                      <?php endwhile;?>
                     <div class="right menu">
-                     <a class="item">
-                         <form action="includes/recherche.php">
-                            <a class="ui transparent icon input">
-                                <input type="search" id="recherche" class="prompt" type="text" placeholder="Recherche">
-                                <i class="search link icon inverted"></i>
-                            </a>
-                         </form>
-                     </a>
-                     <div class="panier ui icon input">
-                         <a class="_panier" href="?page=panier"><i class="link inverted shop icon"><b>&nbsp(<?=array_sum($_SESSION['panier'])?>)</b></i></a>
-                     </div>
+                        <div class="ui transparent icon input">
+                            <input type="text" class="recherche" name="recherche" placeholder="Recherche">
+                            <i class="search link icon inverted"></i>
+                        </div>
+                        <div class="panier ui icon input">
+                            <a class="_panier" href="?page=panier"><i class="link inverted shop icon"><b>&nbsp(<?=array_sum($_SESSION['panier'])?>)</b></i></a>
+                        </div>
                     </div>
             </div>
            </div>
        </nav>
+
+        <div class="ui container">
+            <div class="ui right aligned grid">
+                <div class="right floated left aligned four wide column">
+                        <div class="results" id="results">
+
+                        </div>
+                </div>
+            </div>
 
 <!----navbar---->
 

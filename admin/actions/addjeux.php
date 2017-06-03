@@ -18,7 +18,7 @@ $check = $check_img->check($_FILES['image']);
     if($check===true){
 
         $fichier = $check_img->upload($basename, $_FILES['image']);
-        $title = strip_tags(($_POST["title"]));
+        $title = $_POST["title"];
         $prix = floatval($_POST["prix"]);
         if(isset($_POST['categorie'])){
             $category = $_POST['categorie'];
@@ -40,9 +40,11 @@ $check = $check_img->check($_FILES['image']);
         }
 
         if($error==''){
-            $sql = "INSERT INTO jeux (title, prix, datePub, imgSmall, quantity, description, view)  VALUES ('$title', '$prix', '$date', '$fichier', '$quantity', '$description', '$view')";
+            $sql = "INSERT INTO jeux (title, prix, datePub, imgSmall, quantity, description, view)  VALUES (:title, '$prix', '$date', '$fichier', '$quantity', '$description', '$view')";
             $result = $dbh->prepare($sql);
-            $result->execute();
+            $result->execute([
+                'title' => $_POST['title']
+            ]);
             $jeuxInsertedId = $dbh->lastInsertId();
             foreach($category as $val){
                 $sql2 = "INSERT INTO cat_join (jeux_id, categorie_id) VALUES ('$jeuxInsertedId', '$val')";

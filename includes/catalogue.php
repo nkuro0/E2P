@@ -1,5 +1,4 @@
 <?php if($_GET['page'] == 'catalogue'):?>
-<div class="ui container">
     <div class="ui two column stackable grid">
         <div class="two column row">
             <?php require_once "includes/formlogin.php";?>
@@ -93,15 +92,14 @@
                         <a class="item" data-tab="second">Vidéo | Gallerie</a>
                         <a class="item" data-tab="third">Avis</a>
                     </div>
-                    <div class="ui bottom attached tab segment active" data-tab="first"><p><?=$jeux->description?></p></div>
-                    <div class="ui bottom attached tab segment" data-tab="second">
+                    <div class="ui transition fade in bottom attached tab segment active" data-tab="first"><p><?=$jeux->description?></p></div>
+                    <div class="ui transition fade in bottom attached tab segment" data-tab="second">
                         <div class="video-gallery">
                             <iframe src="https://www.youtube.com/embed/KrXrk1ntTCc" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="ui bottom attached tab segment" data-tab="third">
+                    <div class="ui transition fade in bottom attached tab segment" data-tab="third">
                         <div class="ui four cards">
-
                             <?php while($jeux=$result4->fetchObject()):?>
                             <?php $_SESSION['allUsers'][] = $jeux->username ?>
                                 <div class="card">
@@ -133,6 +131,10 @@
                                 $commentsPosted=true;
                             }?>
                         <form id="form-avis" action="actions/addAvis.php" method="post">
+                            <?php if(isset($_SESSION)):?>
+                            <div id="show" class="ui single blue button afficher">Envoyer un avis</div>
+                            <?php endif; ?>
+                            <div class="envoiAvis">
                             <div class="ui two stackable grid">
                                 <div class="three wide column">
                                     <input type="hidden" name="userId" value="<?= $_SESSION['auth']->id ?>">
@@ -161,6 +163,7 @@
                             <input type="hidden" name="avis_exist" value="update">
                             <?php endif; ?>
                             <input class="ui single blue button" type="submit" id="envoyer" value="Envoyer"/>
+                            </div>
                         </form>
 
                         <?php endif; ?>
@@ -188,7 +191,6 @@
             }
             $affichagecatalogue = $dbh->prepare($sql);
             $affichagecatalogue->execute();
-
             ?>
             <div class="ui text menu">
                 <div class="header item">Trier par</div>
@@ -234,7 +236,7 @@
         echo '    </div>
             </div>
         </div>
-        </div>';
+        ';
         ?>
         <?php endif; ?>
 

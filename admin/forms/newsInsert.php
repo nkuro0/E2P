@@ -1,10 +1,15 @@
 <h3>Ajouter une actualité</h3>
+<div class="row">
+    <div class="col-sm-6">
 <form action="actions/addnews.php" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="title">Titre de la news</label>
         <input type="text" name="title" id="titre" class="form-control" required>
     </div>
-
+    <div class="form-group">
+        <label for="date">Date</label>
+        <input type='text' name="date" class="form-control" id='datetimepicker' />
+    </div>
     <div class="form-group">
         <label for="image">Image de la news</label>
         <input type="file" name="image" id="image" class="form-control" required>
@@ -25,4 +30,6 @@
         <input type="submit" name="addnews" value="Ajouter" class="btn btn-success form-control">
     </div>
 </form>
+        </div>
+    </div>
 

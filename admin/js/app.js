@@ -1,6 +1,6 @@
 $(function () {
     $('#datetimepicker').datetimepicker({
         locale: 'fr',
-        format: 'YYYY-DD-MM'
+        format: 'YYYY-MM-DD'
     });
 });

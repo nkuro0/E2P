@@ -60,9 +60,13 @@ if(isset($_POST)){
             $error.='Le titre doit être inférieur à 100 caractère';
         }
         if($error==''){
-            $sql = ("INSERT INTO news (title, content, datePub, time, img, view) VALUES('$titre','$comment', CURDATE(), CURTIME(), '$fichier', $view)");
+            $sql = ("INSERT INTO news (title, content, datePub, time, img, view) VALUES(:title,:comment, :date, CURTIME(), '$fichier', $view)");
             $result = $dbh->prepare($sql);
-            $result->execute();
+            $result->execute([
+                'title' => $titre,
+                'comment' => $comment,
+                'date' => $_POST['date']
+            ]);
             header('location: ../index.php?page=news');
         }
         else{

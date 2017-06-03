@@ -19,6 +19,8 @@ while($checkedcat=$result2->fetchObject()){
 
 ?>
 <h3>Modifier un jeu</h3>
+<div class="row">
+    <div class="col-sm-6">
 <form action="actions/updatejeux.php" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="title">Titre du jeu</label>
@@ -27,6 +29,10 @@ while($checkedcat=$result2->fetchObject()){
     <div class="form-group">
         <label for="prix">Prix du jeu</label>
         <input type="number" step="0.01" value="<?=$row->prix?>"" name="prix" id="prix" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="date">Date de sortie</label>
+        <input type='text' name="date" value="<?=$row->datePub?>" class="form-control" id='datetimepicker' />
     </div>
     <div class="form-check">
         <label for="categorie" class="form-check-label">
@@ -62,3 +68,5 @@ while($checkedcat=$result2->fetchObject()){
         <input type="submit" name="updatejeux" value="Modifier" class="btn btn-success form-control">
     </div>
 </form>
+        </div>
+    </div>

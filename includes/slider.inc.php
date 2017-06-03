@@ -8,7 +8,6 @@ $resultMenu->execute();
 ?>
 <link rel="stylesheet" href="css/app.css">
 <!----slider---->
-<div class="ui container">
     <div id="Glide" class="glide">
 
         <div class="glide__arrows">
@@ -32,7 +31,6 @@ $resultMenu->execute();
 
         <div class="glide__bullets"></div>
     </div>
-</div>
 <script>
     $(document).ready(function(){
         $('#gamies').click(function(){

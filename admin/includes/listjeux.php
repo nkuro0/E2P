@@ -3,20 +3,34 @@ if($_SESSION['auth']->levelUser <= 2){
     echo '<h2>Vous n\'avez pas les droits pour modifier les jeux disponible</h2>';
 }
 else {
-$sql ="SELECT id, title, prix, quantity, quantitySold, DATE_FORMAT(datePub, '%d/%m/%y') AS `date`, imgSmall, quantity, description, view
+    include_once "includes/tri.php";
+$sql ="SELECT id, title, prix, quantity, quantitySold, datePub, imgSmall, quantity, description, view
 FROM jeux ORDER BY datePub DESC";
-$result = $dbh->query($sql);
 
+    if(isset($_GET['order'])){
+        $rightSql = "SELECT jeux.id, jeux.datePub, jeux.imgSmall, jeux.title, jeux.quantity, jeux.quantitySold, jeux.prix, jeux.description
+                        FROM jeux
+                        ";
+        $tri_autorises = array('title','datePub', 'prix', 'quantity');
+        $order_by = in_array($_GET['order'],$tri_autorises) ? $_GET['order'] : 'datePub';
+        $order_dir = isset($_GET['inverse']) ? 'DESC' : 'ASC';
+        $sql = $rightSql.'ORDER BY '.$order_by.' '.$order_dir;
+    }
+    $result = $dbh->query($sql);
 ?>
 <h3>Gestion des jeux&nbsp;&nbsp;&nbsp;[<a href="?forms=jeuxinsert">Ajouter</a>]</h3>
 <table class="table table-hover">
     <thead>
     <tr>
+
+
+
+
         <th>Image</th>
-        <th>Titre</th>
-        <th>Date Création</th>
-        <th>prix</th>
-        <th>quantité</th>
+        <th><?php echo sort_link('jeux&order=','Nom', 'title') ?></th>
+        <th><?php echo sort_link('jeux&order=','Date', 'datePub') ?></th>
+        <th><?php echo sort_link('jeux&order=','Prix', 'prix') ?></th>
+        <th><?php echo sort_link('jeux&order=','quantity', 'quantity') ?></th>
         <th>Description</th>
         <th>Modifier</th>
         <th>Supprimer</th>
@@ -27,7 +41,7 @@ $result = $dbh->query($sql);
         <tr>
             <td><img src="../img/imgJeux/<?=$row->imgSmall?>" style="width: 50px;"></td>
             <td><?=$row->title?></td>
-            <td><?=$row->date?></td>
+            <td><?=$row->datePub?></td>
             <td><?=$row->prix?>€</td>
             <td><?=$row->quantity?></td>
             <td><?= $cuttext->justcut($row->description)?></td>

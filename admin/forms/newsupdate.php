@@ -6,13 +6,18 @@ $row = $result->fetchObject();
 echo '<h3>Mise à jour de la news '.$row->title.' ';
 echo '</h3>';
 ?>
+<div class="row">
+    <div class="col-sm-6">
 <form action="actions/updatenews.php" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="title">Titre de la news</label>
         <input type="text" name="title" value="<?= $row->title ?>" id="titre" class="form-control" required>
     </div>
     <div class="form-group">
-
+        <label for="date">Date</label>
+        <input type='text' value="<?=$row->datePub?>"name="date" class="form-control" id='datetimepicker' />
+    </div>
+    <div class="form-group">
         <label for="image">Image de la news</label>
         <input type="file" name="image" id="image" class="form-control">
         <img src="../img/imgNews/<?=$row->img?>" style="width: 200px;">
@@ -35,4 +40,6 @@ echo '</h3>';
         <input type="submit" name="addnews" value="Mettre à jour" class="btn btn-success form-control">
     </div>
 </form>
+        </div>
+    </div>
 

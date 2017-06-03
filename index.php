@@ -2,6 +2,17 @@
 
 require "includes/header.inc.php";
 
+if($_GET['page'] === 'accueil' && !isset($_GET['order'])){
+    header('Location: ?page=accueil&order');
+}
+if($_GET['page'] === 'catalogue' && !isset($_GET['order'])) {
+    header('Location: ?page=catalogue&order');
+}
+
+if($_GET['page'] === ''){
+    header('Location: ?page=accueil&order');
+}
+
 if($_GET['page'] == 'addpanier') {
 require "actions/addpanier.php";
 }
@@ -31,7 +42,7 @@ if($_GET['page'] == 'accueil') {
     require "includes/slider.inc.php";
     ?>
 
-    <div class="ui container">
+
     <div class="ui two row stackable grid">
         <div class="three column row">
 
@@ -200,7 +211,7 @@ require "includes/formlogin.php";
                 <?php endwhile; ?>
             </div>
         </div>
-    </div>
+</div>
     </main>
 
 <?php }
@@ -208,16 +219,26 @@ include "includes/catalogue.php";
 
 //Page "News" -------------
 if($_GET['page'] == 'news') {
+if(isset($_GET['id'])){
+    $id=$_GET['id'];
+    $sql = "SELECT id, title, img, content, datePub, `time`, `view`
+       FROM news
+       WHERE `view` = 1 AND id NOT IN ('$id')
+       ORDER BY datePub DESC";
+}
+else{
     $sql = "SELECT id, title, img, content, datePub, `time`, `view`
        FROM news
        WHERE `view` = 1
        ORDER BY datePub DESC";
+}
 $affichagenews = $dbh->prepare($sql);
 $affichagenews->execute();
 ?>
     <div class="ui container">
         <div class="ui grid">
-            <div class="two column row">
+                <div class="ui two column stackable grid">
+                    <div class="two column row">
                 <?php require "includes/formlogin.php"; ?>
                 <div class="thirteen wide column"><h3 class="ui header center aligned segment">News</h3>
 <?php
@@ -230,9 +251,9 @@ if ($_GET['page'] == 'news' && isset($_GET['id'])) {
     $result->execute(['id' => $_GET['id']]);
     $news = $result->fetchObject();
     ?>
-                    <div class="ui grid vertical segment" style="background-color: rgba(0, 0, 0, 0.03); border-radius: 25px">
+                    <div class="ui two stackable grid vertical segment">
                         <div class="three wide column">
-                            <img class="ui top aligned huge image" style="border-style: solid; border-radius:10px; border-width:5px; border-color: #ffffff;" src="img/imgnews/<?=$news->img?>">
+                            <img class="ui centered small image" style="border-style: solid; border-radius:10px; border-width:5px; border-color: #ffffff;" src="img/imgnews/<?=$news->img?>">
                         </div>
                         <div class="thirteen wide column">
                             <h4 class="ui header"><?=$news->title?></h4>
@@ -245,9 +266,9 @@ if ($_GET['page'] == 'news' && isset($_GET['id'])) {
 }
 ?>
                     <?php while ($news = $affichagenews->fetchObject()): ?>
-                        <div class="ui grid vertical segment">
+                    <div class="ui two stackable grid vertical segment">
                             <div class="three wide column">
-                                <img class="ui top aligned small image" src="img/imgNews/<?= $news->img ?>">
+                                <img class="ui centered small image" src="img/imgNews/<?= $news->img ?>">
                             </div>
                             <div class="thirteen wide column">
                                 <h4 class="ui header"><?= $news->title ?> </h4>
@@ -256,19 +277,18 @@ if ($_GET['page'] == 'news' && isset($_GET['id'])) {
 
                                 <p><?= $cutText->cutString($news->content, $news->id)?></p>
                             </div>
-                        </div>
+                    </div>
                     <?php endwhile; ?>
                 </div>
             </div>
         </div>
     </div>
-
 <?php
 }
 
 //Page Nos services -----------
 
-elseif($_GET['page'] == 'Service') {
+elseif($_GET['page'] == 'service') {
     $sql = "SELECT content from pages WHERE slug = 'Service'";
     $res = $dbh->prepare($sql);
     $res->execute();
@@ -288,6 +308,7 @@ elseif($_GET['page'] == 'Service') {
             </div>
         </div>
     </div>
+
 <?php
 
 }

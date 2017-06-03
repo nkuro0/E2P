@@ -1,4 +1,3 @@
-
 .container {
     width:1250px;
     margin: auto;
@@ -6,6 +5,10 @@
 
 main {
     min-height:750px;
+}
+
+.ui.secondary.labeled.icon.toggle.button{
+    display: none;
 }
 
 h3 {
@@ -33,6 +36,7 @@ nav .panier {
 
 .ui.inverted.segment {
     padding: 0;
+    margin: 0;
 }
 
 .panier {
@@ -50,7 +54,13 @@ li.glide__slide div {
     width:1250px;
     margin:auto;
 }
+.glide__slide.active {
+    width: 100%
+}
 
+.glide__slide {
+    width:100%
+}
 img .img-slider{
     width:100%;
 }
@@ -108,7 +118,7 @@ iframe{
     min-height: 300px;
 }
 
-#recherche{
+.ui.transparent.icon.input .recherche{
     color: white;
 }
 .description p{
@@ -140,26 +150,12 @@ iframe{
 
 /* tab */
 
-.ui.bottom.attached.tab.segment{
-    opacity:0;
-    z-index: 1;
-    height:0;
-    -webkit-transition: all 400ms ease-in-out;
-    -moz-transition: all 400ms ease-in-out;
-    -ms-transition: all 400ms ease-in-out;
-    -o-transition: all 400ms ease-in-out;
-    transition: all 400ms ease-in-out;
+#show{
+
 }
 
-.ui.bottom.attached.tab.segment.active{
-    opacity:1;
-    height:auto;
-    z-index: 1;
-    -webkit-transition: all 400ms ease-in-out;
-    -moz-transition: all 400ms ease-in-out;
-    -ms-transition: all 400ms ease-in-out;
-    -o-transition: all 400ms ease-in-out;
-    transition: all 400ms ease-in-out;
+.envoiAvis{
+
 }
 
 /* Effet hover sur image catalogue */
@@ -233,12 +229,28 @@ li.ui.vertical.animated.button.buybutton a {
 }
 
 .ui.grid {
-    padding-top: 30px;
+    padding-top: 5px;
 }
 
 .ui.input.focus.login {
     margin-bottom: 10px;
 }
+
+.search.element{
+    color:rgb(51, 153, 255);
+    height: 25px;
+
+}
+
+.search.element:hover {
+    color:rgb(128, 212, 255);
+
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -ms-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+}
+
 
 .ui.left.icon.input {
     width: 100%;
@@ -262,6 +274,33 @@ color: inherit;
 footer {
 margin-top: 50px;
     
+}
+
+@media screen and (max-width: 640px) {
+
+    .ui.header.search.element{
+        width: 125px;
+        margin-right: 150px;
+        padding-right: 25px;
+
+    }
+
+    .ui.secondary.labeled.icon.toggle.button{
+        display: block;
+        position: fixed;
+        margin: 20px;
+        margin-left: 10px;
+        z-index: 1000;
+    }
+
+    .glide
+    {
+        display: none;
+    }
+
+    .ui.inverted.segment{
+        display: none;
+    }
 }
 
 
