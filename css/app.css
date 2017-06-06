@@ -131,6 +131,9 @@ iframe{
 }
 
 /* Bouton */
+.ui.button.mobile{
+    display: none;
+}
 .ui.fluid.large.teal.submit.button {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -277,9 +280,13 @@ margin-top: 50px;
 }
 
 @media screen and (max-width: 640px) {
+    .ui.button.mobile{
+        display: inline-block;
+    }
 
     .ui.header.search.element{
         width: 125px;
+        height: 70px !important;
         margin-right: 150px;
         padding-right: 25px;
 

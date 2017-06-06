@@ -3,7 +3,7 @@ if($_SESSION['auth']->levelUser <= 2){
     echo '<h2>Vous n\'avez pas les droits pour modifier les jeux disponible</h2>';
 }
 else {
-    include_once "includes/tri.php";
+
 $sql ="SELECT id, title, prix, quantity, quantitySold, datePub, imgSmall, quantity, description, view
 FROM jeux ORDER BY datePub DESC";
 

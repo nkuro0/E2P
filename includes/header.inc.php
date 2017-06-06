@@ -55,6 +55,13 @@ $page = $result->fetchObject();
     <main>
         <!----navbar mobile---->
         <div class="ui sidebar inverted vertical menu">
+            <div class="ui transparent icon input">
+                <a class="item">
+                    <input type="text" class="recherche" name="recherche" placeholder="Recherche">
+                    <i class="search link icon inverted"></i>
+                </a>
+            </div>
+            <div class="results" id="results"></div>
             <a class="item" href="?page=panier"><i class="link inverted shop icon"><b>&nbsp(<?=array_sum($_SESSION['panier'])?>)</b></i>Panier</a>
             <?php while($row2 =$resultMenu2->fetchObject()):?>
                 <a class="item <?php
@@ -64,20 +71,12 @@ $page = $result->fetchObject();
                 ?>" href="?page=<?=$row2->slug?>"><?=$row2->link?></a>
 
             <?php endwhile;?>
-            <div class="ui transparent icon input">
-                <a class="item">
-                    <input type="text" class="recherche" name="recherche" placeholder="Recherche">
-                    <i class="search link icon inverted"></i>
-                </a>
-            </div>
-            <div class="results" id="results">
-
-            </div>
         </div>
         <!----navbar mobile---->
         <!----navbar---->
         <div class="pusher">
         <div class="ui secondary labeled icon toggle button"><i class="sidebar icon"></i>menu</div>
+            
        <nav class="ui inverted segment">
            <div class="ui nav container">
             <div class="ui inverted secondary pointing menu">

@@ -53,6 +53,7 @@
                 ?>
 
                 <div class="ui vertical segment">
+                <div class="ui vertical segment">
                     <div class="ui two column stackable grid">
                         <div class="thirteen wide column">
                             <h4 class="ui header"><?=$jeux->title?></h4>
@@ -203,7 +204,7 @@
 
                 <div class="ui two stackable grid vertical segment">
                     <div class="three wide column">
-                        <a href="?page=catalogue&id=<?=$jeux->id?>"><img class="circleiconcat" src="img/icons/circle.svg"></a>
+                        <a href="?page=catalogue&id=<?=$jeux->id?>&order=datePub"><img class="circleiconcat" src="img/icons/search.svg"></a>
                         <img class="ui centered small image" src="img/imgjeux/<?=$jeux->imgSmall?>">
                     </div>
                     <div class="thirteen wide column">

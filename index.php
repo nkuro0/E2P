@@ -79,7 +79,7 @@ require "includes/formlogin.php";
                         <li class="jeuglobal" data-id="el<?= $affichage->id ?>">
                             <div class="jeuContent">
                                 <ul>
-                                    <li><img class="circleicon" src="img/icons/circle.svg"><img class="imgjeux"
+                                    <li><img class="circleicon" src="img/icons/search.svg"><img class="imgjeux"
                                                 src="img/imgjeux/<?= $affichage->imgSmall ?>" height="150" width="100"></li>
                                     <li class="placement">
                                         <ul class="placement-prix">
@@ -157,7 +157,7 @@ require "includes/formlogin.php";
                             <li class="jeuglobal" data-id="el<?= $affichage->id ?>">
                                 <div class="jeuContent">
                                     <ul>
-                                        <li><img class="circleicon" src="img/icons/circle.svg"><img
+                                        <li><img class="circleicon" src="img/icons/search.svg"><img
                                                 src="img/imgjeux/<?= $affichage->imgSmall ?>" height="150" width="100"></li>
                                         <li class="placement">
                                             <ul class="placement-prix">
