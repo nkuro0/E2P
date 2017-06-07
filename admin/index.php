@@ -1,6 +1,9 @@
 <?php
 session_start();
-if($_SESSION['auth']->levelUser <= 1){
+if(!isset($_SESSION['auth'])){
+    require 'error404.html';
+}
+elseif($_SESSION['auth']->levelUser <= 1){
     require 'error404.html';
 }
 else {
@@ -26,7 +29,7 @@ require 'includes/header.inc.php';
                         </h1>
                     </div>
                 </div>
-                <!-- /.row -->
+                <!-- /.row
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-primary">
@@ -117,11 +120,15 @@ require 'includes/header.inc.php';
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
+
+                 /.row -->
 
                 <div class="row">
                     <div class="col-xs-12">
                         <?php
+                            if ($_GET['page'] == 'dashboard') {
+                                require 'includes/dashboard.php';
+                            }
                            if ($_GET['page'] == 'insertPage') {
                                require 'forms/pageinsert.php';
                            }

@@ -6,7 +6,7 @@ if($_GET['page'] === 'accueil' && !isset($_GET['order'])){
     header('Location: ?page=accueil&order');
 }
 if($_GET['page'] === 'catalogue' && !isset($_GET['order'])) {
-    header('Location: ?page=catalogue&order');
+    header('Location: ?page=catalogue&pagenbr=1&order');
 }
 
 if($_GET['page'] === ''){
@@ -43,8 +43,8 @@ if($_GET['page'] == 'accueil') {
     ?>
 
 
-    <div class="ui two row stackable grid">
-        <div class="three column row">
+<div class="ui two row stackable grid">
+    <div class="three column row">
 
 <?php
 require "includes/formlogin.php";
@@ -61,10 +61,20 @@ require "includes/formlogin.php";
 
     $affichagejeux = $dbh->prepare($sql);
     $affichagejeux->execute();
-
+    $sql = "SELECT jeux.id, jeux.title, jeux.imgSmall, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`, jeux.description, avis_jeux.text, avis_jeux.avis_user_id, avis_jeux.avis_jeux_id, avis_join.avis_eval, users.username, users.levelUser
+                FROM jeux
+                INNER JOIN avis_jeux ON avis_jeux.avis_jeux_id = jeux.id
+                INNER JOIN users ON users.id = avis_jeux.avis_user_id
+                INNER JOIN avis_join ON avis_join.avis_id = avis_jeux.id
+                WHERE levelUser = 1
+                ORDER BY avis_join.id DESC
+                LIMIT 4";
+    $avis = $dbh->prepare($sql);
+    $avis->execute();
     ?>
             <!-- Affichage Maintenant disponible -->
-<div class="ui ten wide column "><h3 class="ui header center aligned segment">Maintenant disponible</h3>
+<div class="ui ten wide column ">
+    <h3 class="ui header center aligned segment">Maintenant disponible</h3>
     <div class="ui text menu">
         <div class="header item">Trier par</div>
         <?php echo sort_link('accueil&order=','Nom', 'title') ?>
@@ -121,10 +131,9 @@ require "includes/formlogin.php";
                                     <div class="ui black deny button">
                                         Fermer
                                     </div>
-                                    <div class="ui positive right labeled icon button">
-                                        <a class="buyModal" href="?page=addpanier&id=<?= $affichage->id ?>">Acheter</a>
-                                        <i class="checkmark icon"></i>
-                                    </div>
+                                        <?php if($affichage->quantity>0):?>
+                                        <a class="ui blue button" href="?page=addpanier&id=<?= $affichage->id ?>">Acheter</a>
+                                        <?php endif; ?>
                                 </div>
                             </div>
                         </li>
@@ -132,8 +141,19 @@ require "includes/formlogin.php";
                     <?php endwhile; ?>
 
                 </ul>
-            </div>
+    </div>
+        <div class="ui three wide column">
+            <h3 class="ui header center aligned segment">Derniers avis</h3>
+            <?php while ($row = $avis->fetchObject()): ?>
+                <h4 class="ui header"><?=$row->username?></h4>
+                <div class="ui one stackable grid vertical segment">
+                <a href="?page=catalogue&id=<?=$row->id?>&order=datePub"><?=$row->title?></a>
+                <p>Commentaire:</p>
+                <p><?=$row->text?></p>
+                </div>
+            <?php endwhile; ?>
         </div>
+</div>
 
         <!-- Affichage Meilleure ventes -->
 

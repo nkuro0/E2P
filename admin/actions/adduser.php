@@ -1,7 +1,5 @@
 <?php
 
-var_dump($_POST);
-
 $errors = array();
 
 if(empty($_POST['firstname']) || !preg_match('/^\p{L}+$/ui', $_POST['firstname'])){

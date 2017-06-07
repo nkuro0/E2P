@@ -308,6 +308,10 @@ margin-top: 50px;
     .ui.inverted.segment{
         display: none;
     }
+
+    .ui.four.cards .card.special{
+        width: calc(50% - 1.5em);
+    }
 }
 
 

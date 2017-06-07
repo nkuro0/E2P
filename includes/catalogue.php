@@ -12,17 +12,24 @@
             <!– Affichage d'un seul jeu –>
 
             <?php if(isset($_GET['id'])) {
-                $sql = "SELECT jeux.id, jeux.title, jeux.prix, jeux.quantity, jeux.datePub, jeux.imgSmall, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`, jeux.description, avis_jeux.text, avis_jeux.avis_user_id, avis_jeux.avis_jeux_id, avis_join.avis_eval, users.username
+                $idJeux = $_GET['id'];
+                $sql = "SELECT jeux.id, jeux.title, jeux.prix, jeux.quantity, jeux.datePub, jeux.imgSmall, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`, jeux.description, avis_jeux.text, avis_jeux.avis_user_id, avis_jeux.avis_jeux_id, avis_join.avis_eval, users.username, users.levelUser
                 FROM jeux 
                 INNER JOIN avis_jeux ON avis_jeux.avis_jeux_id = jeux.id
                 INNER JOIN users ON users.id = avis_jeux.avis_user_id
                 INNER JOIN avis_join ON avis_join.avis_id = avis_jeux.id
-                WHERE jeux.id = :id";
+                WHERE jeux.id = $idJeux";
                 $result = $dbh->prepare($sql);
-                $result->execute(['id' => $_GET['id']]);
+                $result->execute();
                 $jeux = $result->fetchObject();
-                $result4 = $dbh->prepare($sql);
-                $result4->execute(['id' => $_GET['id']]);
+                $sql5 = "SELECT jeux.id, jeux.title, jeux.prix, jeux.quantity, jeux.datePub, jeux.imgSmall, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`, jeux.description, avis_jeux.text, avis_jeux.avis_user_id, avis_jeux.avis_jeux_id, avis_join.avis_eval, users.username, users.levelUser
+                FROM jeux
+                INNER JOIN avis_jeux ON avis_jeux.avis_jeux_id = jeux.id
+                INNER JOIN users ON users.id = avis_jeux.avis_user_id
+                INNER JOIN avis_join ON avis_join.avis_id = avis_jeux.id
+                WHERE jeux.id = $idJeux AND levelUser=1";
+                $result4 = $dbh->prepare($sql5);
+                $result4->execute();
                 $sql2 = "SELECT *
                 FROM categorie
                 INNER JOIN cat_join
@@ -83,7 +90,9 @@
                             <img class="ui top aligned huge image"
                                  style="border-style: solid; border-radius:5px; border-width:5px;"
                                  src="img/imgjeux/<?=$jeux->imgSmall?>">
+                            <?php if($jeux->quantity>0):?>
                             <a class="ui single blue button" href="?page=addpanier&id=<?= $jeux->id?>">Acheter</a>
+                            <?php endif;?>
                         </div>
                     </div>
 
@@ -103,7 +112,7 @@
                         <div class="ui four cards">
                             <?php while($jeux=$result4->fetchObject()):?>
                             <?php $_SESSION['allUsers'][] = $jeux->username ?>
-                                <div class="card">
+                                <div class="card special">
                                     <div class="content">
                                         <div class="header"><?=$jeux->username?></div>
                                         <div class="description"><p><?=$jeux->text?></p></div>
@@ -178,6 +187,21 @@
             }
 
             //Affichage de tout les jeux -----
+            $nbrObj = 6;
+            $sql = "SELECT id FROM jeux";
+            $totalProduitsReq = $dbh->prepare($sql);
+            $totalProduitsReq->execute();
+            $totalObj = $totalProduitsReq->rowCount();
+                $pagesTotal = ceil($totalObj/$nbrObj);
+                if(isset($_GET['pagenbr']) AND !empty($_GET['pagenbr']) AND $_GET['pagenbr'] > 0){
+                    $_GET['pagenbr'] = intval($_GET['pagenbr']);
+                    $pageCourante = $_GET['pagenbr'];
+                }
+                else{
+                    $pageCourante = 1;
+                }
+                $depart = ($pageCourante-1)*$nbrObj;
+
             $rightSql = "SELECT jeux.id, jeux.imgSmall, jeux.title, jeux.quantity, jeux.quantity, jeux.prix, jeux.description, GROUP_CONCAT(avis_join.avis_eval) AS `avgEval`
                         FROM jeux
                         INNER JOIN avis_join ON avis_join.jeux_id = jeux.id
@@ -185,13 +209,14 @@
             $tri_autorises = array('quantity','title', 'prix', 'date');
             $order_by = in_array($_GET['order'],$tri_autorises) ? $_GET['order'] : 'datePub';
             $order_dir = isset($_GET['inverse']) ? 'DESC' : 'ASC';
-            $sql = $rightSql.'GROUP BY jeux.id ORDER BY '.$order_by.' '.$order_dir;
+            $sql = $rightSql.'GROUP BY jeux.id ORDER BY '.$order_by.' '.$order_dir.' LIMIT '.$depart.','.$nbrObj;
             if(isset($_GET['id'])){
                 $id = $_GET['id'];
-                $sql = $rightSql."WHERE jeux.id NOT IN ('$id') GROUP BY jeux.id ORDER BY datePub DESC";
+                $sql = $rightSql."WHERE jeux.id NOT IN ('$id') GROUP BY jeux.id ORDER BY datePub DESC LIMIT ".$depart.",".$nbrObj;
             }
             $affichagecatalogue = $dbh->prepare($sql);
             $affichagecatalogue->execute();
+
             ?>
             <div class="ui text menu">
                 <div class="header item">Trier par</div>
@@ -199,6 +224,45 @@
                 <?php echo sort_link('catalogue&order=','Prix', 'prix') ?>
                 <?php echo sort_link('catalogue&order=','Date', 'datePub') ?>
                 <?php echo sort_link('catalogue&order=','Disponibilitée', 'quantity') ?>
+            </div>
+            <div class='ui pagination menu'>
+            <?php for($i=1;$i<=$pagesTotal;$i++){
+                if($_GET['order']=='title') {
+                    if(!isset($_GET['inverse'])){
+                        echo '<a class="item" href="?page=catalogue&pagenbr=' . $i . '&order=title">' . $i . '</a>';
+                    }
+                    else{
+                        echo '<a class="item" href="?page=catalogue&pagenbr=' . $i . '&order=title&inverse=true">' . $i . '</a>';
+                    }
+                }
+                if($_GET['order']=='prix'){
+                    if(!isset($_GET['inverse'])){
+                        echo '<a class="item" href="?page=catalogue&pagenbr='.$i.'&order=prix">'.$i.'</a>';
+                    }
+                    else{
+                        echo '<a class="item" href="?page=catalogue&pagenbr=' . $i . '&order=prix&inverse=true">' . $i . '</a>';
+                    }
+                }
+                if($_GET['order']=='datePub'){
+                    if(!isset($_GET['inverse'])){
+                        echo '<a class="item" href="?page=catalogue&pagenbr='.$i.'&order=datePub">'.$i.'</a>';
+                    }
+                    else{
+                        echo '<a class="item" href="?page=catalogue&pagenbr=' . $i . '&order=datePub&inverse=true">' . $i . '</a>';
+                    }
+                }
+                if($_GET['order']=='quantity'){
+                    if(!isset($_GET['inverse'])){
+                        echo '<a class="item" href="?page=catalogue&pagenbr='.$i.'&order=quantity">'.$i.'</a>';
+                    }
+                    else{
+                        echo '<a class="item" href="?page=catalogue&pagenbr=' . $i . '&order=quantity&inverse=true">' . $i . '</a>';
+                    }
+                }
+                if(empty($_GET['order'])){
+                    echo '<a class="item" href="?page=catalogue&pagenbr=' . $i . '&order">' . $i . '</a>';
+                }
+            }?>
             </div>
             <?php while($jeux=$affichagecatalogue->fetchObject()):?>
 
@@ -210,7 +274,8 @@
                     <div class="thirteen wide column">
                         <h4 class="ui header"><?=$jeux->title?> </h4>
                         <?php if($jeux->quantity>0) {
-                            echo '<h5 class="ui header" style="color: rgba(145, 222, 110, 1)">En stock</h5>';
+                            echo '<h5
+} class="ui header" style="color: rgba(145, 222, 110, 1)">En stock</h5>';
                         }
                         else {
                             echo '<h5 class="ui header" style="color: rgba(179, 25, 38, 1)">Hors stock</h5>';
@@ -226,7 +291,9 @@
                             <?php endif; ?>
                         <?php endfor; ?>
                         <p><?=$cutText->cutString2($jeux->description, $jeux->id)?></p>
+                        <?php if($jeux->quantity>0):?>
                         <a class="ui blue button" href="?page=addpanier&id=<?=$jeux->id?>">Acheter</a>
+                        <?php endif;?>
                     </div>
                 </div>
 
