@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 06 Juin 2017 à 11:30
+-- Généré le :  Mer 07 Juin 2017 à 11:21
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -54,11 +54,20 @@ INSERT INTO `avis_jeux` (`id`, `avis_jeux_id`, `avis_user_id`, `text`, `date`) V
 (74, 3, 3, '<p>J&#39;ai ador&eacute; test</p>\r\n', NULL),
 (75, 5, 3, '<p>J&#39;ai ador&eacute; test</p>\r\n', NULL),
 (76, 5, 4, '<p>bordeland 2 un grand classique !</p>\r\n', NULL),
-(77, 10, 3, '<p>ouai</p>\r\n\r\n<p>&nbsp;</p>\r\n', NULL),
+(77, 10, 3, '<p>La suite d&#39;un mmorpg mythique</p>\r\n', NULL),
 (79, 22, 9, NULL, NULL),
 (84, 27, 9, NULL, NULL),
-(91, 34, 9, NULL, NULL),
-(92, 34, 3, '<p>Trop cool !</p>\r\n', NULL);
+(94, 27, 3, '<p>Le meilleur jeu de cette ann&eacute;e</p>\r\n', NULL),
+(95, 15, 3, '<p>Un jeu de survie que j&#39;adore</p>\r\n', NULL),
+(96, 14, 3, '<p>Le meilleur rts qui est sorti r&eacute;cemment</p>\r\n', NULL),
+(97, 13, 3, '<p>Un jeu m&eacute;di&eacute;val de qualit&eacute;, merci e2p :)</p>\r\n', NULL),
+(98, 4, 3, '<p>Un jeu d&#39;infiltration de qualit&eacute;</p>\r\n', NULL),
+(99, 4, 12, '<p>Je l&#39;ai fini, j&#39;ai ador&eacute;</p>\r\n', NULL),
+(100, 3, 12, '<p>Un jeu sur la 1&egrave;re guerre mondial qui est super !</p>\r\n', NULL),
+(101, 12, 12, '<p>J&#39;adore dragon ball et tout les jeux de combats de la licence</p>\r\n', NULL),
+(102, 11, 3, '<p>La licence star wars &agrave; trouv&eacute; son nouveau bijoux !</p>\r\n', NULL),
+(103, 22, 3, '<p>Un tactical fps de malade !</p>\r\n', NULL),
+(105, 27, 9, '<p>azer</p>\r\n', NULL);
 
 -- --------------------------------------------------------
 
@@ -97,8 +106,17 @@ INSERT INTO `avis_join` (`id`, `jeux_id`, `user_id`, `avis_id`, `avis_eval`) VAL
 (26, 10, 3, 77, 1),
 (28, 22, 9, 79, 0),
 (33, 27, 9, 84, 0),
-(40, 34, 9, 91, 0),
-(41, 34, 3, 92, 5);
+(43, 27, 3, 94, 3),
+(44, 15, 3, 95, 1),
+(45, 14, 3, 96, 5),
+(46, 13, 3, 97, 4),
+(47, 4, 3, 98, 5),
+(48, 4, 12, 99, 4),
+(49, 3, 12, 100, 4),
+(50, 12, 12, 101, 3),
+(51, 11, 3, 102, 4),
+(52, 22, 3, 103, 4),
+(54, 27, 9, 105, 1);
 
 -- --------------------------------------------------------
 
@@ -173,8 +191,7 @@ INSERT INTO `cat_join` (`id`, `jeux_id`, `categorie_id`) VALUES
 (159, 22, 10),
 (160, 27, 1),
 (161, 27, 7),
-(162, 27, 11),
-(163, 34, 1);
+(162, 27, 11);
 
 -- --------------------------------------------------------
 
@@ -233,8 +250,7 @@ INSERT INTO `jeux` (`id`, `title`, `prix`, `datePub`, `imgSmall`, `quantity`, `q
 (14, 'Warhammer 40000 : Dawn of War 3 ', '34.99', '2017-05-04', 'dawnofwar3.jpg', 5, NULL, '<p>Prenez part &agrave; des batailles sans merci parmi trois factions Dans Dawn of War&reg; III, vous devez affronter vos ennemis tandis qu&#39;une arme extr&ecirc;mement dangereuse vient d&#39;&ecirc;tre d&eacute;couverte dans le monde myst&eacute;rieux d&#39;Acheron. Tandis que la guerre fait rage, la supr&eacute;matie sera synonyme de survie sur une plan&egrave;te assi&eacute;g&eacute;e par les arm&eacute;es du seigneur Gorgutz, un Orque des plus voraces, de Macha, ambitieux proph&egrave;te des Eldars, et du puissant commandant des Space Marines, Gabriel Angelos</p>\r\n', 1),
 (15, 'H1Z1', '20.99', '2015-04-09', 'h1z1.jpg', 7, NULL, '<p>H1Z1 is currently in Early Access on Steam. With a fully transparent approach to game design and development here at Daybreak Games, we want to transform the way our players interact and participate with our games. H1Z1 Early Access is your chance to experience and make a difference in H1Z1 as it evolves throughout the development process.&nbsp;</p>\r\n', 1),
 (22, 'Rainbow six : Siege', '15.75', '2015-06-19', 'rainbow6siege.jpg', 50, NULL, '<p>test</p>\r\n', 1),
-(27, 'Doom 3', '3.4', '2009-06-23', 'Doom3.png', 10, NULL, '<p>super doom 3</p>\r\n', 1),
-(34, 'warhammer 40000', '27', '2017-06-08', 'dawnofwar3.jpg', 10, NULL, 'azeazgazg\r\n', 1);
+(27, 'Doom 3', '3.4', '2009-06-23', 'Doom3.png', 10, NULL, '<p>super doom 3</p>\r\n', 1);
 
 -- --------------------------------------------------------
 
@@ -307,7 +323,7 @@ INSERT INTO `pages` (`id`, `title`, `description`, `link`, `slug`, `view`, `cont
 (1, 'Nos derniers arrivage', 'Easy 2 play votre revendeur de jeux dématérialisé.', 'Accueil', 'accueil', 1, '<h2>Accueil</h2>\r\n'),
 (2, 'Nos jeux', 'Notre catalogue de jeux', 'Catalogue', 'catalogue', 1, ''),
 (3, 'Nouveautés', 'Nos news', 'News ', 'news', 1, ''),
-(4, 'Nos services', 'Liste des services que nous proposons', 'Nos services', 'service', 1, '<h1>Pr&eacute;ambule</h1>\r\n\r\n<p>En validant sa commande, le Client d&eacute;clare accepter sans r&eacute;serve les termes de ladite commande ainsi que l&#39;int&eacute;gralit&eacute; des pr&eacute;sentes conditions g&eacute;n&eacute;rales de vente.</p>\r\n\r\n<h1>Article 1 - Objet</h1>\r\n\r\n<p>Le pr&eacute;sent site a pour objet la vente de cl&eacute;s CD t&eacute;l&eacute;chargeables en ligne &agrave; partir du site Instant-Gaming.com, sous forme de carte scann&eacute;e, ou dans de rares cas sous forme de code affich&eacute; au format texte. Les codes sont des cl&eacute;s officielles permettant de d&eacute;bloquer l&#39;int&eacute;gralit&eacute; d&#39;un jeu t&eacute;l&eacute;charg&eacute; sous forme digitale aupr&egrave;s des plate-formes de t&eacute;l&eacute;chargement mises &agrave; disposition par les d&eacute;veloppeurs du jeu. La disponibilit&eacute; des cartes est en fonction des stocks. Un produit qui n&#39;est pas en stock ne pourra &ecirc;tre achet&eacute;, puisque nous d&eacute;sactivons la vente si le code ou la carte n&#39;est pas disponible.</p>\r\n\r\n<h1>Article 2 - Formules - Dur&eacute;e</h1>\r\n\r\n<p>Le client pourra acheter en ligne les diff&eacute;rentes cartes contenant une cl&eacute; CD, selon le tarif en vigueur le jour de la commande. Une fois le code entr&eacute;, il sera consomm&eacute; pendant la p&eacute;riode choisie. L&#39;activation du jeu sera effective d&egrave;s le code valid&eacute; par la plate forme.</p>\r\n\r\n<h1>Article 3 - Tarifs et modes de r&egrave;glement</h1>\r\n\r\n<p>Les tarifs correspondent &agrave; l&#39;acc&egrave;s au jeu complet, pr&eacute;cis&eacute; sur les pages du site. Ils sont consultables &agrave; tout moment sur le site internet instant-gaming.com.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt="" src="http://i.kinja-img.com/gawker-media/image/upload/t_original/wwy4z3jyvpawouujaprp.jpg" style="height:398px; width:800px" /></p>\r\n'),
+(4, 'Nos services', 'Liste des services que nous proposons', 'Nos services', 'service', 1, '<h1>Pr&eacute;ambule</h1>\r\n\r\n<p>En validant sa commande, le Client d&eacute;clare accepter sans r&eacute;serve les termes de ladite commande ainsi que l&#39;int&eacute;gralit&eacute; des pr&eacute;sentes conditions g&eacute;n&eacute;rales de vente.</p>\r\n\r\n<h1>Article 1 - Objet</h1>\r\n\r\n<p>Le pr&eacute;sent site a pour objet la vente de cl&eacute;s CD t&eacute;l&eacute;chargeables en ligne &agrave; partir du site Instant-Gaming.com, sous forme de carte scann&eacute;e, ou dans de rares cas sous forme de code affich&eacute; au format texte. Les codes sont des cl&eacute;s officielles permettant de d&eacute;bloquer l&#39;int&eacute;gralit&eacute; d&#39;un jeu t&eacute;l&eacute;charg&eacute; sous forme digitale aupr&egrave;s des plate-formes de t&eacute;l&eacute;chargement mises &agrave; disposition par les d&eacute;veloppeurs du jeu. La disponibilit&eacute; des cartes est en fonction des stocks. Un produit qui n&#39;est pas en stock ne pourra &ecirc;tre achet&eacute;, puisque nous d&eacute;sactivons la vente si le code ou la carte n&#39;est pas disponible.</p>\r\n\r\n<h1>Article 2 - Formules - Dur&eacute;e</h1>\r\n\r\n<p>Le client pourra acheter en ligne les diff&eacute;rentes cartes contenant une cl&eacute; CD, selon le tarif en vigueur le jour de la commande. Une fois le code entr&eacute;, il sera consomm&eacute; pendant la p&eacute;riode choisie. L&#39;activation du jeu sera effective d&egrave;s le code valid&eacute; par la plate forme.</p>\r\n\r\n<h1>Article 3 - Tarifs et modes de r&egrave;glement</h1>\r\n\r\n<p>Les tarifs correspondent &agrave; l&#39;acc&egrave;s au jeu complet, pr&eacute;cis&eacute; sur les pages du site. Ils sont consultables &agrave; tout moment sur le site internet instant-gaming.com.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n'),
 (6, 'Support', 'Support client', 'Support', 'support', 1, '');
 
 -- --------------------------------------------------------
@@ -369,7 +385,8 @@ INSERT INTO `users` (`id`, `name`, `firstname`, `username`, `password`, `mail`, 
 (1, 'gér', 'Flo', 'modo', '$2y$10$uax1uRAIgLgifL5QPuDoq.P0inM75vSzj9frznpSWGK8XOFN/O87i', 'modo@hotmail.fr', 2),
 (3, 'nic', 'pol', 'user', '$2y$10$Pb206riroSduHj9INO7Bou0sgzfU3R3HeW2FBLXGXAWSpbEi2gnpG', 'user1@hotmail.fr', 1),
 (4, 'mat', 'mut', 'admin', '$2y$10$HRprY87Fl/HkVkCc2JPyteF75sxHMLS04HMnzAFw/DDbcXsFTEHsO', 'admin@hotmail.fr', 3),
-(9, 'god', 'div', 'webdev', '$2y$10$OLd7Fx8l0fjmBcFIHm2EtuoCEtokjZ6Z3lrozdfbl98OvBYMLYUre', 'webdev@hotmail.fr', 4);
+(9, 'god', 'div', 'webdev', '$2y$10$OLd7Fx8l0fjmBcFIHm2EtuoCEtokjZ6Z3lrozdfbl98OvBYMLYUre', 'webdev@hotmail.fr', 4),
+(12, 'Florian', 'Gérard', 'NKuro', '$2y$10$.ChjRG5j3/F..KFPoXDm4.IsEy/XZnDqVjKbiewc9uDSEbmOyRZDe', 'nkuro@hotmail.Fr', 1);
 
 --
 -- Index pour les tables exportées
@@ -466,12 +483,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `avis_jeux`
 --
 ALTER TABLE `avis_jeux`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 --
 -- AUTO_INCREMENT pour la table `avis_join`
 --
 ALTER TABLE `avis_join`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT pour la table `categorie`
 --
@@ -481,7 +498,7 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT pour la table `cat_join`
 --
 ALTER TABLE `cat_join`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 --
 -- AUTO_INCREMENT pour la table `comments`
 --
@@ -491,7 +508,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT pour la table `jeux`
 --
 ALTER TABLE `jeux`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT pour la table `level_users`
 --
@@ -501,7 +518,7 @@ ALTER TABLE `level_users`
 -- AUTO_INCREMENT pour la table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT pour la table `pages`
 --
@@ -521,7 +538,7 @@ ALTER TABLE `slides`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Contraintes pour les tables exportées
 --
