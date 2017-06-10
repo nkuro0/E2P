@@ -57,16 +57,16 @@ require "includes/formlogin.php";
     $tri_autorises = array('quantity','title', 'prix', 'date');
     $order_by = in_array($_GET['order'],$tri_autorises) ? $_GET['order'] : 'date';
     $order_dir = isset($_GET['inverse']) ? 'DESC' : 'ASC';
-    $sql = $rightSql.'ORDER BY '.$order_by.' '.$order_dir;
+    $sql = $rightSql.'ORDER BY '.$order_by.' '.$order_dir.' LIMIT 16';
 
     $affichagejeux = $dbh->prepare($sql);
     $affichagejeux->execute();
-    $sql = "SELECT jeux.id, jeux.title, jeux.imgSmall, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`, jeux.description, avis_jeux.text, avis_jeux.avis_user_id, avis_jeux.avis_jeux_id, avis_join.avis_eval, users.username, users.levelUser
+    $sql = "SELECT jeux.id, jeux.title, jeux.imgSmall, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`, jeux.description, avis_jeux.text, avis_jeux.avis_user_id, avis_jeux.avis_jeux_id, avis_join.avis_eval, users.username, users.levelUser, jeux.view
                 FROM jeux
                 INNER JOIN avis_jeux ON avis_jeux.avis_jeux_id = jeux.id
                 INNER JOIN users ON users.id = avis_jeux.avis_user_id
                 INNER JOIN avis_join ON avis_join.avis_id = avis_jeux.id
-                WHERE levelUser = 1
+                WHERE levelUser = 1 AND `view` = 1
                 ORDER BY avis_join.id DESC
                 LIMIT 4";
     $avis = $dbh->prepare($sql);
@@ -77,13 +77,12 @@ require "includes/formlogin.php";
     <h3 class="ui header center aligned segment">Maintenant disponible</h3>
     <div class="ui text menu">
         <div class="header item">Trier par</div>
-        <?php echo sort_link('accueil&order=','Nom', 'title') ?>
+        <?php echo sort_link('accueil&order=','Nom', 'title')?>
         <?php echo sort_link('accueil&order=','Prix', 'prix') ?>
         <?php echo sort_link('accueil&order=','Date', 'date') ?>
         <?php echo sort_link('accueil&order=','Disponibilitée', 'quantity') ?>
     </div>
                 <ul>
-
                     <?php $i=1; ?>
                     <?php while ($affichage = $affichagejeux->fetchObject()): ?>
                         <li class="jeuglobal" data-id="el<?= $affichage->id ?>">
@@ -94,11 +93,21 @@ require "includes/formlogin.php";
                                     <li class="placement">
                                         <ul class="placement-prix">
                                             <li class="priceText"><?= $affichage->prix ?>€</li>
-                                                <li class="mini ui vertical animated button buybutton" tabindex="0">
-                                                <div class="hidden content"><a href="?page=addpanier&id=<?= $affichage->id ?>">Acheter</div></a>
+                                            <?php if($affichage->quantity>0): ?>
+                                                <li class="tiny ui vertical animated button buybutton" tabindex="0">
+                                                <div class="hidden content"><a href="?page=addpanier&id=<?= $affichage->id ?>">Acheter</a></div>
                                                 <div class="visible content">
                                                     <i class="shop icon"></i>
                                                 </div>
+                                                </li>
+                                                <?php else: ?>
+                                                <li class="tiny ui button red" tabindex="0">
+                                                    <div class="hidden content"><a href="?page=addpanier&id=<?= $affichage->id ?>"></a></div>
+                                                    <div class="visible content">
+                                                        <i class="shop icon"></i>
+                                                    </div>
+                                                </li>
+                                            <?php endif; ?>
                                             </li>
                                         </ul>
                                     </li>
@@ -116,13 +125,14 @@ require "includes/formlogin.php";
                                     </div>
 
                                     <div class="description">
-                                        <div class="ui header"><?= $affichage->prix ?> €</div>
+                                        <h2 class="ui header"><?= $affichage->prix ?> €</h2>
+                                        <h4 class="ui header">Date de sortie : <?= $affichage->date ?></h4>
                                         <p><?= $cutText->cutString2($affichage->description, $affichage->id) ?></p>
                                         <div class="quantity">
                                             <?php if($affichage->quantity>0): ?>
-                                                <h5 class="ui header" style="color: rgba(145, 222, 110, 1)">En stock</h5>
+                                                <h4 class="ui header" style="color: rgba(145, 222, 110, 1)">En stock</h4>
                                             <?php else: ?>
-                                                <h5 class="ui header" style="color: rgba(179, 25, 38, 1)">Hors stock</h5>
+                                                <h4 class="ui header" style="color: rgba(179, 25, 38, 1)">Hors stock</h4>
                                             <?php endif?>
                                         </div>
                                     </div>
@@ -159,7 +169,7 @@ require "includes/formlogin.php";
 
         <?php
 
-        $sql = "SELECT id, prix, imgSmall, quantitySold, view
+        $sql = "SELECT id, prix, imgSmall, quantity, view
             FROM jeux
             WHERE `view` = 1
             ORDER BY quantitySold DESC
@@ -182,12 +192,21 @@ require "includes/formlogin.php";
                                         <li class="placement">
                                             <ul class="placement-prix">
                                                 <li class="priceText"><?= $affichage->prix ?>€</li>
-                                                <li class="mini ui vertical animated button buybutton" tabindex="0">
-                                                    <div class="hidden content"><a href="?page=addpanier&id=<?= $affichage->id ?>">Acheter</div></a>
-                                                    <div class="visible content">
-                                                        <i class="shop icon"></i>
-                                                    </div>
-                                                </li>
+                                                <?php if($affichage->quantity>0): ?>
+                                                    <li class="tiny ui vertical animated button buybutton" tabindex="0">
+                                                        <div class="hidden content"><a href="?page=addpanier&id=<?= $affichage->id ?>">Acheter</a></div>
+                                                        <div class="visible content">
+                                                            <i class="shop icon"></i>
+                                                        </div>
+                                                    </li>
+                                                <?php else: ?>
+                                                    <li class="tiny ui button red" tabindex="0">
+                                                        <div class="hidden content"><a href="?page=addpanier&id=<?= $affichage->id ?>"></a></div>
+                                                        <div class="visible content">
+                                                            <i class="shop icon"></i>
+                                                        </div>
+                                                    </li>
+                                                <?php endif; ?>
                                             </ul>
                                         </li>
                                     </ul>
@@ -281,7 +300,6 @@ if ($_GET['page'] == 'news' && isset($_GET['id'])) {
                         </div>
 
                     </div>
-    <?php require "includes/comments.php";?>
 <?php
 }
 ?>
@@ -320,7 +338,7 @@ elseif($_GET['page'] == 'service') {
                 <?php require "includes/formlogin.php"; ?>
                 <div class="twelve wide column">
                     <div class="ui left aligned segment">
-                        <h1>Services et en vente</h1>
+                        <h1>Conditions Générales de Vente</h1>
                         <?= $content->content ?>
                     </div>
                     <br>
@@ -337,6 +355,14 @@ elseif($_GET['page'] == 'service') {
 elseif($_GET['page'] == 'support') {
     require "includes/formSupport.php";
 }
+
+elseif($_GET['page'] == 'commande'){
+    if(isset($_SESSION['auth'])){
+        require "includes/commandes.php";
+    }
+}
+
+
 require "includes/footer.inc.php";
 
 

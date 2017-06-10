@@ -19,15 +19,16 @@ $check = $check_img->check($_FILES['image']);
 
         $fichier = $check_img->upload($basename, $_FILES['image']);
         $title = $_POST["title"];
-        $prix = floatval($_POST["prix"]);
+        $prix = $_POST["prix"];
         if(isset($_POST['categorie'])){
             $category = $_POST['categorie'];
         }
         $quantity = intval($_POST['quantity']);
         $description = strip_tags($_POST['description']);
         $view = strip_tags($_POST['view']);
+        $url = $_POST['url'];
         $idAdmin = intval($_POST['id-admin']);
-        $evalAdmin = intval($_POST['eval-admin']);
+
         $date = $_POST['date'];
         $error = '';
 
@@ -40,7 +41,7 @@ $check = $check_img->check($_FILES['image']);
         }
 
         if($error==''){
-            $sql = "INSERT INTO jeux (title, prix, datePub, imgSmall, quantity, description, view)  VALUES (:title, '$prix', '$date', '$fichier', '$quantity', '$description', '$view')";
+            $sql = "INSERT INTO jeux (title, prix, datePub, imgSmall, url, quantity, description, view)  VALUES (:title, '$prix', '$date', '$fichier','$url','$quantity', '$description','$view')";
             $result = $dbh->prepare($sql);
             $result->execute([
                 'title' => $_POST['title']
@@ -55,7 +56,7 @@ $check = $check_img->check($_FILES['image']);
             $result = $dbh->prepare($sql);
             $result->execute();
             $avisJeuxInsertedId = $dbh->lastInsertId();
-            $sql = "INSERT INTO avis_join (jeux_id, user_id, avis_id, avis_eval) VALUES('$jeuxInsertedId', '$idAdmin','$avisJeuxInsertedId', '$evalAdmin')";
+            $sql = "INSERT INTO avis_join (jeux_id, user_id, avis_id) VALUES('$jeuxInsertedId', '$idAdmin','$avisJeuxInsertedId')";
             $result = $dbh->prepare($sql);
             $result->execute();
             header('location: ../index.php?page=jeux');

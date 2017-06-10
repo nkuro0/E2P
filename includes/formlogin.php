@@ -34,6 +34,7 @@
             <div class="ui center aligned green segment">
                 <p>Bonjour <b><?= $_SESSION['auth']->firstname ?> <?= $_SESSION['auth']->name ?></b></p>
                 <p><?= $message ?></p>
+                <a href="?page=commande"><div class="ui green button">Vos commandes</div></a>
             </div>
         <?php endforeach; ?>
     <?php endif; ?>

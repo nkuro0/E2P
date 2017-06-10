@@ -12,19 +12,18 @@
 </head>
 
 <body>
-
-    <div class="ui container">
-        <div class="ui grid">
-            <div class="one column row">
+    <div class="ui middle aligned center aligned grid">
                 <div class="six wide column">
+
                     <h3 class="ui header center aligned segment">Log admin</h3>
-                    <form action="actions/logadmin.php" method="POST">
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="user icon"></i>
-                                <input type="text" name="username" placeholder="Login">
+                    <form action="actions/logadmin.php" method="POST" class="ui large form">
+                        <div class="ui stacked secondary segment">
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="user icon"></i>
+                                    <input type="text" name="username" placeholder="Login">
+                                </div>
                             </div>
-                        </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
@@ -32,11 +31,10 @@
                             </div>
                         </div>
                         <button class="ui fluid large teal submit button" type="submit">Login</button>
+                        </div>
                     </form>
                 </div>
-            </div>
         </div>
     </div>
-
 </body>
 </html>

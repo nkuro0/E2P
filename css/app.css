@@ -11,6 +11,10 @@ main {
     display: none;
 }
 
+input.quantity{
+    width: 100px;
+}
+
 h3 {
     font-family: 'Nova Square', cursive !important;
     font-size: 1.1em !important;
@@ -271,6 +275,10 @@ color: inherit;
 
 /* Panier */
 
+/* Support */
+div.eight.wide.column.map{
+    margin-top: 15px;
+}
 
 /* footer */
 

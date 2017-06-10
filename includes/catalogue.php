@@ -2,10 +2,10 @@
     <div class="ui two column stackable grid">
         <div class="two column row">
             <?php require_once "includes/formlogin.php";?>
+
             <div class="three wide column">
             </div>
         </div>
-
         <div class="thirteen wide column">
             <h3 class="ui header center aligned segment">Jeux</h3>
 
@@ -13,7 +13,7 @@
 
             <?php if(isset($_GET['id'])) {
                 $idJeux = $_GET['id'];
-                $sql = "SELECT jeux.id, jeux.title, jeux.prix, jeux.quantity, jeux.datePub, jeux.imgSmall, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`, jeux.description, avis_jeux.text, avis_jeux.avis_user_id, avis_jeux.avis_jeux_id, avis_join.avis_eval, users.username, users.levelUser
+                $sql = "SELECT jeux.id, jeux.title, jeux.prix, jeux.quantity, jeux.datePub, jeux.imgSmall,url, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`, jeux.description, avis_jeux.text, avis_jeux.avis_user_id, avis_jeux.avis_jeux_id, avis_join.avis_eval, users.username, users.levelUser
                 FROM jeux 
                 INNER JOIN avis_jeux ON avis_jeux.avis_jeux_id = jeux.id
                 INNER JOIN users ON users.id = avis_jeux.avis_user_id
@@ -22,7 +22,7 @@
                 $result = $dbh->prepare($sql);
                 $result->execute();
                 $jeux = $result->fetchObject();
-                $sql5 = "SELECT jeux.id, jeux.title, jeux.prix, jeux.quantity, jeux.datePub, jeux.imgSmall, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`, jeux.description, avis_jeux.text, avis_jeux.avis_user_id, avis_jeux.avis_jeux_id, avis_join.avis_eval, users.username, users.levelUser
+                $sql5 = "SELECT jeux.id, jeux.title, jeux.prix, jeux.quantity, jeux.datePub, jeux.imgSmall, DATE_FORMAT(datePub, '%d-%m-%y') AS `date`, jeux.description, avis_jeux.text, avis_jeux.avis_user_id, avis_jeux.avis_jeux_id, avis_join.avis_eval,DATE_FORMAT(dateAvis, '%d-%m-%y') AS dateAvis , TIME_FORMAT(dateTime, '%H:%I') AS dateTime, users.username, users.levelUser
                 FROM jeux
                 INNER JOIN avis_jeux ON avis_jeux.avis_jeux_id = jeux.id
                 INNER JOIN users ON users.id = avis_jeux.avis_user_id
@@ -58,8 +58,6 @@
                 }
 
                 ?>
-
-                <div class="ui vertical segment">
                 <div class="ui vertical segment">
                     <div class="ui two column stackable grid">
                         <div class="thirteen wide column">
@@ -99,13 +97,13 @@
 
                     <div class="ui top attached tabular menu">
                         <a class="item active" data-tab="first">Description</a>
-                        <a class="item" data-tab="second">Vidéo | Gallerie</a>
+                        <a class="item" data-tab="second">Vidéo</a>
                         <a class="item" data-tab="third">Avis</a>
                     </div>
                     <div class="ui transition fade in bottom attached tab segment active" data-tab="first"><p><?=$jeux->description?></p></div>
                     <div class="ui transition fade in bottom attached tab segment" data-tab="second">
                         <div class="video-gallery">
-                            <iframe src="https://www.youtube.com/embed/KrXrk1ntTCc" frameborder="0" allowfullscreen></iframe>
+                            <iframe src="<?=$jeux->url?>" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                     <div class="ui transition fade in bottom attached tab segment" data-tab="third">
@@ -115,7 +113,7 @@
                                 <div class="card special">
                                     <div class="content">
                                         <div class="header"><?=$jeux->username?></div>
-                                        <div class="description"><p><?=$jeux->text?></p></div>
+                                        <div class="description"><p><?=$jeux->dateAvis?> a <?=$jeux->dateTime?></p><p><?=$jeux->text?></p></div>
                                     </div>
                                     <div class="extra content">
                                         Rating:
@@ -142,7 +140,12 @@
                             }?>
                         <form id="form-avis" action="actions/addAvis.php" method="post">
                             <?php if(isset($_SESSION)):?>
-                            <div id="show" class="ui single blue button afficher">Envoyer un avis</div>
+                                <?php if($commentsPosted == false): ?>
+                                <div id="show" class="ui single blue button afficher" style="margin-top: 25px">Modifier votre avis</div>
+                                    <?php else: ?>
+                                <div id="show" class="ui single blue button afficher" style="margin-top: 25px">Envoyer un avis</div>
+                                <?php endif; ?>
+
                             <?php endif; ?>
                             <div class="envoiAvis">
                             <div class="ui two stackable grid">
@@ -152,6 +155,7 @@
                                     <h4>Evaluation</h4>
                                     <label for="eval">
                                         <select name="eval" class="ui fluid dropdown">
+                                            <option value="1">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>

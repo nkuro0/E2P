@@ -88,4 +88,4 @@ if(isset($_POST)) {
     }
 }
 
-header('location: ../index.php?page=news');
+header('location: ../?page=news');

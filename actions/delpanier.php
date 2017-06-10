@@ -11,7 +11,7 @@ if($_GET){
         $jeu = $affichagejeux->fetchObject();
 
         $panier->del($jeu->id);
-        header('location: index.php?page=panier');
+        header('location: ?page=panier');
     }
 }
 

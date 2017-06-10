@@ -22,12 +22,12 @@ $res->execute();
 $row = $res->fetchobject();
 
 if(isset($_POST)) {
-
         $sql = "UPDATE jeux
                 SET title= :title,
                     prix= :prix,
                     datePub= :date,
                     quantity= :quantity,
+                    url= :url,
                     view= :view,
                     description= :description
                 WHERE id = :id";
@@ -39,6 +39,7 @@ if(isset($_POST)) {
                 'prix' => $_POST['prix'],
                 'date' => $_POST['date'],
                 'quantity' => $_POST['quantity'],
+                'url' => $_POST['url'],
                 'view' => $_POST['view'],
                 'description' => $_POST['description'],
                 'id' => $id,
@@ -116,4 +117,4 @@ if(isset($_POST)) {
     }
 }
 
-header('location: ../index.php?page=jeux');
+header('location: ../?page=jeux');

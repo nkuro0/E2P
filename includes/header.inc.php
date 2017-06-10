@@ -43,6 +43,7 @@ $page = $result->fetchObject();
     <script src="js/semantic.min.js"></script>
     <!-- CK editor -->
     <script src="js/ckeditor/ckeditor.js"></script>
+    <script src="js/calcul.js"></script>
 
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Nova+Square" rel="stylesheet">
@@ -57,7 +58,7 @@ $page = $result->fetchObject();
         <div class="ui sidebar inverted vertical menu">
             <div class="ui transparent icon input">
                 <a class="item">
-                    <input type="text" class="recherche" name="recherche" placeholder="Recherche">
+                    <input type="text" class="recherche" name="recherche" placeholder="Rechercher votre jeu">
                     <i class="search link icon inverted"></i>
                 </a>
             </div>
@@ -93,7 +94,7 @@ $page = $result->fetchObject();
                      <?php endwhile;?>
                     <div class="right menu">
                         <div class="ui transparent icon input">
-                            <input type="text" class="recherche" name="recherche" placeholder="Recherche">
+                            <input type="text" class="recherche" name="recherche" placeholder="Rechercher votre jeu">
                             <i class="search link icon inverted"></i>
                         </div>
                         <div class="panier ui icon input">

@@ -36,6 +36,11 @@ $result->execute();
                 <input type="file" name="image" id="image" class="form-control" required>
             </div>
             <div class="form-group">
+                <label for="video">Vidéo du jeu</label>
+                <input type="url" value="https://" name="url" id="video" class="form-control">
+
+            </div>
+            <div class="form-group">
                 <label for="view">Afficher le jeu</label>
                 <select class="form-control" name="view" id="view">
                     <option value="1">Oui</option>

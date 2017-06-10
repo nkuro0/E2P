@@ -67,7 +67,7 @@ if(isset($_POST)){
                 'comment' => $comment,
                 'date' => $_POST['date']
             ]);
-            header('location: ../index.php?page=news');
+            header('location: ../forms/addnews.php');
         }
         else{
             echo $error;

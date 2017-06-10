@@ -31,7 +31,7 @@ if(isset($statement)){
     ]);
 }
 else{
-    $sql = "INSERT INTO avis_jeux (avis_jeux_id, avis_user_id, text) VALUES ('$jeuxId', '$userId', '$text')";
+    $sql = "INSERT INTO avis_jeux (avis_jeux_id, avis_user_id, text, dateAvis, dateTime) VALUES ('$jeuxId', '$userId', '$text', CURDATE(), CURTIME())";
     $result = $dbh->prepare($sql);
     $result->execute();
     $avis_jeuxId = $dbh->lastInsertId();

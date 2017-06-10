@@ -2,7 +2,7 @@
 // Couche logique
 // SLIDER
 
-$sql = "SELECT title, prix, img FROM slides WHERE `view` = 1";
+$sql = "SELECT slides.jeux_id, slides.img, slides.view, jeux.prix, jeux.title FROM slides INNER JOIN jeux ON jeux.id=slides.jeux_id WHERE slides.view = 1";
 $resultMenu = $dbh->prepare($sql);
 $resultMenu->execute();
 ?>

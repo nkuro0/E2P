@@ -52,6 +52,13 @@ while($checkedcat=$result2->fetchObject()){
         <img src="../img/imgJeux/<?=$row->imgSmall?>" style="width: 200px;">
     </div>
     <div class="form-group">
+        <label for="video">Vidéo du jeu</label>
+        <input type="url" value="<?=$row->url?>" name="url" id="url" class="form-control">
+        <div class="video-gallery">
+            <iframe src="<?=$row->url?>" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="form-group">
         <label for="view">Afficher le jeu</label>
         <select class="form-control" name="view" id="view">
             <option value="1" <?= $row->view ? 'selected' : ''?>>Oui</option>

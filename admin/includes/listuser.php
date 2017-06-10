@@ -20,7 +20,7 @@ $result = $dbh->query($sql);
     }
     $result = $dbh->query($sql);
     ?>
-<h3>Gestion des utilisateurs&nbsp;&nbsp;&nbsp;[<a href="?forms=userinsert">Ajouter</a>]</h3>
+<h3>Gestion des utilisateurs&nbsp;&nbsp;&nbsp;[<a href="?page=userinsert">Ajouter</a>]</h3>
 <table class="table table-hover">
     <thead>
     <tr>
@@ -39,7 +39,7 @@ $result = $dbh->query($sql);
             <td><?=$row->username?></td>
             <td><?=$row->mail?></td>
             <td><?=$row->levelName?></td>
-            <td><a href="?forms=userupdate&id=<?=$row->id?>" class="btn btn-info btn-circle"><i class="fa fa-pencil"></i></a></td>
+            <td><a href="?page=userupdate&id=<?=$row->id?>" class="btn btn-info btn-circle"><i class="fa fa-pencil"></i></a></td>
             <td><a href="#deletepost-<?=$row->id?>" data-toggle="modal" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i></a></td>
         </tr>
 
@@ -55,7 +55,7 @@ $result = $dbh->query($sql);
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                        <a href="?actions=deluser&id=<?=$row->id?>" type="submit" class="btn btn-danger">Supprimer</a>
+                        <a href="?page=deluser&id=<?=$row->id?>" type="submit" class="btn btn-danger">Supprimer</a>
                     </div>
                     </div>
                 </div>

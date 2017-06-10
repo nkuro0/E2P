@@ -13,7 +13,7 @@ $sql = $rightSql.'ORDER BY '.$order_by.' '.$order_dir;
 }
 $result = $dbh->query($sql);
 ?>
-<h3>Gestion des actualités&nbsp;&nbsp;&nbsp;[<a href="?forms=newsInsert">Ajouter</a>]</h3>
+<h3>Gestion des actualités&nbsp;&nbsp;&nbsp;[<a href="?page=newsInsert">Ajouter</a>]</h3>
 <table class="table table-hover">
     <thead>
     <tr>
@@ -32,7 +32,7 @@ $result = $dbh->query($sql);
             <td><?=$row->title?></td>
             <td><?=$row->datePub?></td>
             <td><?=$row->content?></td>
-            <td><a href="?forms=newsupdate&id=<?=$row->id?>" class="btn btn-info btn-circle"><i class="fa fa-pencil"></i></a></td>
+            <td><a href="?page=newsupdate&id=<?=$row->id?>" class="btn btn-info btn-circle"><i class="fa fa-pencil"></i></a></td>
             <td><a href="#deletepost-<?=$row->id?>" data-toggle="modal" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i></a></td>
         </tr>
         <div id="deletepost-<?=$row->id?>" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -47,7 +47,7 @@ $result = $dbh->query($sql);
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                        <a href="?actions=newsdelete&id=<?=$row->id?>" type="submit" class="btn btn-danger">Supprimer</a>
+                        <a href="?page=newsdelete&id=<?=$row->id?>" type="submit" class="btn btn-danger">Supprimer</a>
                     </div>
                 </div>
             </div>

@@ -11,4 +11,4 @@ $result = $dbh->prepare($sql);
 $result->execute([
     'id' => $_GET['id']
 ]);
-header('location: ../index.php?page=news');
+header('location: ../?page=accueil');

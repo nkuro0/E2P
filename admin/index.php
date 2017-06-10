@@ -13,13 +13,13 @@ spl_autoload_register(function($class){
     require '../lib/'.$class.'.php';
 });
 
-$_GET['page'] = $_GET['page'] ?? 'home';
-$_GET['forms'] = $_GET['forms'] ?? 'forms';
-$_GET['actions'] = $_GET['actions'] ?? 'actions';
+$_GET['page'] = $_GET['page'] ?? 'accueil';
+
 $cuttext = new Helper();
 $dbh = DB::getInstance();
 
 require 'includes/header.inc.php';
+
 ?>
                 <!-- Page Heading -->
                 <div class="row">
@@ -29,106 +29,78 @@ require 'includes/header.inc.php';
                         </h1>
                     </div>
                 </div>
-                <!-- /.row
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-comments fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
-                                        <div>New Comments!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-tasks fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
-                                        <div>New Tasks!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-yellow">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-shopping-cart fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">124</div>
-                                        <div>New Orders!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-support fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
-                                        <div>Support Tickets!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
 
-                 /.row -->
+    <?php
+    if($_GET['page']=='accueil'){
+        $sql = "SELECT jeux.id, jeux.datePub, jeux.imgSmall, jeux.title, jeux.quantity, jeux.quantitySold, jeux.prix, jeux.description
+        FROM jeux
+        ORDER BY id DESC
+        LIMIT 3";
+        $result = $dbh->query($sql);
+        $sql ="SELECT id, title, datePub, img, content
+FROM news ORDER BY datePub DESC";
+        $result2 = $dbh->query($sql);
+        ?>
+
+        <h3 class="page header">Les derniers jeux ajouté</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>Titre</th>
+                <th>Date de sortie du jeu</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Description</th>
+                <th>Modifier</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php while ($row = $result->fetchObject()):?>
+                <tr>
+                    <td><img src="../img/imgJeux/<?=$row->imgSmall?>" style="width: 50px;"></td>
+                    <td><?=$row->title?></td>
+                    <td><?=$row->datePub?></td>
+                    <td><?=$row->prix?>€</td>
+                    <td><?=$row->quantity?></td>
+                    <td><?= $cuttext->justcut($row->description)?></td>
+                    <td><a href="?forms=jeuxupdate&id=<?=$row->id?>" class="btn btn-info btn-circle"><i class="fa fa-pencil"></i></a></td>
+
+                </tr>
+            <?php endwhile?>
+            </tbody>
+        </table>
+
+        <h3>Les dernières news</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Contenu</th>
+                <th>Modifier</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php while ($row = $result2->fetchObject()):?>
+                <tr>
+                    <td><img src="../img/imgNews/<?=$row->img?>" style="width: 50px;"></td>
+                    <td><?=$row->title?></td>
+                    <td><?=$row->datePub?></td>
+                    <td><?=$row->content?></td>
+                    <td><a href="?forms=newsupdate&id=<?=$row->id?>" class="btn btn-info btn-circle"><i class="fa fa-pencil"></i></a></td>
+
+                </tr>
+            <?php endwhile?>
+            </tbody>
+        </table>
+        <?php } ?>
 
                 <div class="row">
                     <div class="col-xs-12">
                         <?php
-                            if ($_GET['page'] == 'dashboard') {
-                                require 'includes/dashboard.php';
-                            }
+
                            if ($_GET['page'] == 'insertPage') {
                                require 'forms/pageinsert.php';
                            }
@@ -138,38 +110,62 @@ require 'includes/header.inc.php';
                            elseif ($_GET['page'] == 'news'){
                                require 'includes/listnews.php';
                            }
-                           elseif ($_GET['forms'] == 'newsInsert') {
+                           elseif ($_GET['page'] == 'newsInsert') {
                                require 'forms/newsInsert.php';
                            }
-                           elseif ($_GET['forms'] == 'newsupdate') {
+                           elseif ($_GET['page'] == 'newsupdate') {
                                require 'forms/newsupdate.php';
                            }
-                           elseif ($_GET['actions'] == 'newsdelete') {
+                           elseif ($_GET['page'] == 'newsdelete') {
                                require 'actions/delnews.php';
                            }
                            elseif ($_GET['page'] == 'jeux') {
                                require 'includes/listjeux.php';
                            }
-                           elseif ($_GET['forms'] == 'jeuxinsert') {
+                           elseif ($_GET['page'] == 'jeuxinsert') {
                                 require 'forms/jeuxinsert.php';
                            }
-                           elseif ($_GET['forms'] == 'jeuxupdate') {
+                           elseif ($_GET['page'] == 'jeuxupdate') {
                                require 'forms/jeuxupdate.php';
                            }
-                           elseif ($_GET['actions'] == 'deljeux') {
+                           elseif ($_GET['page'] == 'deljeux') {
                                require 'actions/deljeux.php';
                            }
                            elseif ($_GET['page'] == 'user') {
                                require 'includes/listuser.php';
                            }
-                           elseif ($_GET['forms'] == 'userinsert') {
+                           elseif ($_GET['page'] == 'userinsert') {
                                require 'forms/userinsert.php';
                            }
-                           elseif ($_GET['forms'] == 'userupdate') {
+                           elseif ($_GET['page'] == 'userupdate') {
                                require 'forms/userupdate.php';
                            }
-                           elseif ($_GET['actions'] == 'deluser') {
+                           elseif ($_GET['page'] == 'deluser') {
                                require 'actions/deluser.php';
+                           }
+                           elseif ($_GET['page'] == 'mail') {
+                               require 'includes/listmail.php';
+                           }
+                           elseif ($_GET['page'] == 'delmail') {
+                               require 'actions/delmail.php';
+                           }
+                           elseif ($_GET['page'] == 'slide') {
+                               require 'includes/listslide.php';
+                           }
+                           elseif ($_GET['page'] == 'slidesinsert') {
+                               require 'forms/slidesinsert.php';
+                           }
+                           elseif ($_GET['page'] == 'slidesupdate') {
+                               require 'forms/slidesupdate.php';
+                           }
+                           elseif ($_GET['page'] == 'delslides') {
+                               require 'actions/delslides.php';
+                           }
+                           elseif ($_GET['page'] == 'updateslides') {
+                               require 'actions/updateslides.php';
+                           }
+                           elseif ($_GET['page'] == 'commande') {
+                               require 'includes/listcommande.php';
                            }
                         ?>
                     </div>

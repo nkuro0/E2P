@@ -12,7 +12,7 @@ if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])){
         session_start();
         $_SESSION['auth'] = $user;
         $_SESSION['lvluser'] =
-        $_SESSION['flash']['success'] = 'Vous êtes maintenant bien connecté';
+        $_SESSION['flash']['success'] = 'Vous êtes maintenant connecté';
 
         header ('location:' .$_SERVER['HTTP_REFERER']);
     }

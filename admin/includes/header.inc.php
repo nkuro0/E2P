@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <?php include_once "includes/tri.php"; ?>
@@ -15,6 +15,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+    <link href="css/icon.min.css" rel="stylesheet">
+    <link href="css/semantic.min.css" rel="stylesheet"/>
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
@@ -48,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">E2P - Admin</a>
+                <a class="navbar-brand" href="?page=accueil">E2P - Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -129,7 +131,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="?page=dashboard"><i class="fa fa-fw fa-dashboard"></i>Dashboard</a>
+                        <a href="?page=accueil"><i class="fa fa-fw fa-dashboard"></i>Dashboard</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Gestion des pages <i class="fa fa-fw fa-caret-down"></i></a>
@@ -151,7 +153,16 @@
                         <a href="?page=jeux"><i class="fa fa-gamepad" aria-hidden="true"></i> Gestion des jeux</a>
                     </li>
                     <li>
+                        <a href="?page=commande"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Gestion des commandes</a>
+                    </li>
+                    <li>
+                        <a href="?page=slide"><i class="fa fa-picture-o" aria-hidden="true"></i> Gestion du slider</a>
+                    </li>
+                    <li>
                         <a href="?page=user"><i class="fa fa-user" aria-hidden="true"></i> Gestion des utilisateurs</a>
+                    </li>
+                    <li>
+                        <a href="?page=mail"><i class="fa fa-envelope-o" aria-hidden="true"></i> Mail des utilisateurs</a>
                     </li>
                 </ul>
             </div>

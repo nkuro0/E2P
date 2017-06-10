@@ -6,7 +6,14 @@ function sort_link($page ,$text, $order=false)
     if(!$order)
         $order = $text;
 
-    $link = '<a class="item" href="?page='.$page.''.$order;
+
+    if($_GET['order'] == $order){
+        $link = '<a class="item active" href="?page='.$page.''.$order;
+    }
+    else {
+        $link = '<a class="item" href="?page='.$page.''.$order;
+    }
+
     if($order_by==$order && $order_dir=='ASC')
         $link .= '&inverse=true';
     $link .= '"';
@@ -15,6 +22,12 @@ function sort_link($page ,$text, $order=false)
     elseif($order_by==$order && $order_dir=='DESC')
         $link .= ' class="item"';
     $link .= '>' . $text . '</a>';
+    if($_GET['order'] == $order && $order_dir=='ASC'){
+        $link .= '<i class="angle up icon"></i>';
+    }
+    elseif($_GET['order'] == $order && $order_dir=='DESC'){
+        $link .= '<i class="angle down icon"></i>';
+    }
 
     return $link;
 }
